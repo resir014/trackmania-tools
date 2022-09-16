@@ -1,0 +1,14 @@
+[
+  {
+    "name": "tmviz",
+    "title": "TMViz",
+    "description": "Web-based controller visualisation widget for Trackmania.",
+    "url": "https://tmviz.vercel.app",
+    "logo": "/static/tmviz-logo-white.png",
+    "isExternal": true
+  },
+  {
+    "name": "untitled-1",
+    "title": "Coming soon..."
+  }
+]

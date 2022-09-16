@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  a:focus {
+    @apply outline-none ring-[3px] ring-green-500 ring-opacity-60;
+  }
+}
+
+@layer utilities {
+  .helper-link-cover::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
