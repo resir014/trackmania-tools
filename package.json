@@ -1,11 +1,11 @@
 {
-  "name": "nextjs-typescript-quickstart",
+  "title": "@resir014/trackmania-tools",
   "version": "1.0.0",
-  "description": "Get started on Next.js with TypeScript in seconds.",
+  "description": "A suite of tools for the game Trackmania developed by me.",
   "main": "N/A",
   "repository": "https://github.com/resir014/nextjs-typescript-quickstart",
   "author": "Resi Respati <resir014@gmail.com>",
-  "license": "Unlicense",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next",
