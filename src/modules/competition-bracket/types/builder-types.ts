@@ -11,8 +11,13 @@ export type AllParticipant =
   | SeedParticipant
   | LeaderboardParticipant;
 
+export interface MatchSettingsData {
+  spots: AllParticipant[];
+  settings?: Array<Record<string, unknown>>;
+}
+
 export interface MatchGeneratorData {
-  matches: Array<{ spots: AllParticipant[] }>;
+  matches: MatchSettingsData[];
 }
 
 export interface BuilderRoundDetail {
