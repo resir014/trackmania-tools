@@ -1,21 +1,11 @@
-import { PlusIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
 import { Page } from '~/components/page';
 import { PageContent } from '~/components/page-content';
 import { PageHeader } from '~/components/page-header';
-import { PrimaryButton } from '~/components/ui/button';
+import { generatedJson } from './bracket-builder/builder';
+import { addNewRound, roundsStore } from './bracket-builder/rounds';
 import { AddNewRoundButton } from './components/add-new-round-button';
-import { BuilderRoundDetail } from './types/builder-types';
-
-const rounds: BuilderRoundDetail[] = [
-  {
-    name: 'Round 1',
-    matchGeneratorType: 'spot_filler',
-    matchGeneratorData: {
-      matches: [],
-    },
-  },
-];
+import { RoundDetail } from './components/round-detail';
 
 export function CompetitionBracketBuilder() {
   return (
@@ -23,25 +13,11 @@ export function CompetitionBracketBuilder() {
       <PageContent className="sm:py-12">
         <div className="container mx-auto space-y-8">
           <PageHeader pageTitle="Bracket builder" />
-          {rounds.map(round => (
-            <div
-              key={round.name}
-              className="bg-black rounded-tl-2xl rounded-br-2xl overflow-hidden"
-            >
-              <div className="md:flex md:items-center md:justify-between px-4 py-2 border-b border-gray-700">
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-xl font-semibold leading-8 sm:truncate">{round.name}</h3>
-                </div>
-                <div className="mt-4 flex md:mt-0 md:ml-4">
-                  <PrimaryButton size="sm" icon={PlusIcon}>
-                    Add match
-                  </PrimaryButton>
-                </div>
-              </div>
-              <div className="px-4 py-4">h</div>
-            </div>
+          {roundsStore.value.map((round, index) => (
+            <RoundDetail key={`${index}_${round.name}`} index={index} round={round} />
           ))}
-          <AddNewRoundButton />
+          <AddNewRoundButton onCreateRound={() => addNewRound()} />
+          <pre>{`${JSON.stringify(generatedJson.value, null, 2)}`}</pre>
         </div>
       </PageContent>
     </Page>

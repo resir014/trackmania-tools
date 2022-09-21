@@ -47,25 +47,47 @@ export function buttonRoundedStyles(rounded?: boolean, size?: ButtonSizes) {
   return 'rounded-tl rounded-br';
 }
 
-export function buttonIconClasses(size?: ButtonSizes, iconPosition: ButtonIconPositions = 'left') {
+export function buttonIconClasses(
+  size?: ButtonSizes,
+  iconPosition: ButtonIconPositions = 'left',
+  iconOnly = false
+) {
   switch (size) {
     case 'xs': {
-      return [iconPosition === 'right' ? 'ml-2 -mr-0.5' : '-ml-0.5 mr-2', 'h-4 w-4'];
+      return [
+        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-2 -mr-0.5' : '-ml-0.5 mr-2']),
+        'h-4 w-4',
+      ];
     }
     case 'sm': {
-      return [iconPosition === 'right' ? 'ml-2 -mr-0.5' : '-ml-0.5 mr-2', 'h-4 w-4'];
+      return [
+        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-2 -mr-0.5' : '-ml-0.5 mr-2']),
+        'h-4 w-4',
+      ];
     }
     case 'md': {
-      return [iconPosition === 'right' ? 'ml-2 -mr-1' : '-ml-1 mr-2', 'h-5 w-5'];
+      return [
+        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-2 -mr-1' : '-ml-1 mr-2']),
+        'h-5 w-5',
+      ];
     }
     case 'lg': {
-      return [iconPosition === 'right' ? 'ml-3 -mr-1' : '-ml-1 mr-3', 'h-5 w-5'];
+      return [
+        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-3 -mr-1' : '-ml-1 mr-3']),
+        'h-5 w-5',
+      ];
     }
     case 'xl': {
-      return [iconPosition === 'right' ? 'ml-3 -mr-1' : '-ml-1 mr-3', 'h-5 w-5'];
+      return [
+        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-3 -mr-1' : '-ml-1 mr-3']),
+        'h-5 w-5',
+      ];
     }
     default: {
-      return [iconPosition === 'right' ? 'ml-2 -mr-1' : '-ml-1 mr-2', 'h-5 w-5'];
+      return [
+        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-2 -mr-1' : '-ml-1 mr-2']),
+        'h-5 w-5',
+      ];
     }
   }
 }
@@ -189,15 +211,17 @@ export function renderButtonIcon({
   size,
   additionalClasses,
   iconPosition = 'left',
+  iconOnly = false,
 }: {
   icon?: ButtonProps['icon'];
   size?: ButtonSizes;
   additionalClasses?: string;
   iconPosition?: ButtonIconPositions;
+  iconOnly?: boolean;
 }) {
   if (icon) {
     return React.createElement(icon, {
-      className: clsx(buttonIconClasses(size, iconPosition), additionalClasses),
+      className: clsx(buttonIconClasses(size, iconPosition, iconOnly), additionalClasses),
       'aria-hidden': true,
     });
   }

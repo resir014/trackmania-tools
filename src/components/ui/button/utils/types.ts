@@ -29,6 +29,8 @@ interface ButtonBaseProps {
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   /** If the button has an icon, change where the icon is placed. Defaults to `"left"`. */
   iconPosition?: ButtonIconPositions;
+  /** If the button only renders an icon, set to `true`. */
+  iconOnly?: boolean;
 }
 
 export type ButtonProps = ButtonBaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
