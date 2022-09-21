@@ -37,6 +37,7 @@ export function RoundNameEditor({ initialValue, onChange }: RoundNameEditorProps
         type="text"
         id="roundName"
         name="roundName"
+        autoComplete="off"
         onFocus={() => setIsEditing(true)}
         className={clsx(
           'px-2 py-0 h-[34px] border border-transparent rounded-md text-lg font-semibold',
