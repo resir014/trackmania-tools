@@ -12,7 +12,7 @@ export interface ManualSeedSpotProps {
 
 export function ManualSeedSpot({ spot, onChange }: ManualSeedSpotProps) {
   const rankState = useSignal(spot);
-  const formState = useSignal('');
+  const formState = useSignal(spot.seed.toString());
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();

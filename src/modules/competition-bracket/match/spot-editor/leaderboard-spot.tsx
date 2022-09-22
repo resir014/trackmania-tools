@@ -12,7 +12,7 @@ export interface LeaderboardSpotProps {
 
 export function LeaderboardSpot({ spot, onChange }: LeaderboardSpotProps) {
   const rankState = useSignal(spot);
-  const formState = useSignal('');
+  const formState = useSignal(spot.rank.toString());
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();

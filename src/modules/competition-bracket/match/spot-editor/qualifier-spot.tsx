@@ -12,7 +12,7 @@ export interface QualifierSpotProps {
 
 export function QualifierSpot({ spot, onChange }: QualifierSpotProps) {
   const rankState = useSignal(spot);
-  const formState = useSignal('');
+  const formState = useSignal(spot.rank.toString());
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();

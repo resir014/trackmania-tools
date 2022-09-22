@@ -12,9 +12,9 @@ export interface PreviousRoundSpotProps {
 
 export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
   const rankState = useSignal(spot);
-  const roundPosInputState = useSignal('');
-  const matchPosInputState = useSignal('');
-  const rankInputState = useSignal('');
+  const roundPosInputState = useSignal(spot.roundPosition.toString());
+  const matchPosInputState = useSignal(spot.matchPosition.toString());
+  const rankInputState = useSignal(spot.rank.toString());
 
   const handleRoundPosChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
