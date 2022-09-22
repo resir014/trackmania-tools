@@ -2,10 +2,10 @@ import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { useSignal } from '@preact/signals-react';
 import * as React from 'react';
 import { PrimaryButton, SecondaryButton } from '~/components/ui/button';
-import { addMatchOnRound } from '../bracket-builder/matches';
-import { changeRoundName, clearMatchesInRound, removeRound } from '../bracket-builder/rounds';
+import { addMatchOnRound } from '../builder/matches-builder';
+import { changeRoundName, clearMatchesInRound, removeRound } from '../builder/rounds-builder';
 import { BuilderRoundDetail } from '../types/builder-types';
-import { MatchDetail } from './match-detail';
+import { MatchDetail } from '../match/match-detail';
 import { RoundNameEditor } from './round-name-editor';
 import { RoundPlacementSelector } from './round-placement-selector';
 

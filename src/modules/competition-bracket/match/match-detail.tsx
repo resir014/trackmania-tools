@@ -1,7 +1,7 @@
 import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
 import { SecondaryButton } from '~/components/ui/button';
-import { addPlayerToMatch, removeMatchFromRound } from '../bracket-builder/matches';
+import { addPlayerToMatch, removeMatchFromRound } from '../builder/matches-builder';
 import { MatchSettingsData } from '../types/builder-types';
 import { SpotDetail } from './spot-detail';
 

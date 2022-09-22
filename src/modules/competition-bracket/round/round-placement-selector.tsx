@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { spotTypeSelections } from '../bracket-builder/builder';
+import { spotTypeSelections } from '../builder/bracket-store';
 
 export interface RoundPlacementSelectorProps {
   defaultValue?: string;

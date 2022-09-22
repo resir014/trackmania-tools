@@ -1,7 +1,7 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
 import { SecondaryButton } from '~/components/ui/button';
-import { removePlayerFromMatch } from '../bracket-builder/matches';
+import { removePlayerFromMatch } from '../builder/matches-builder';
 import { AllParticipant } from '../types/builder-types';
 
 export interface SpotDetailProps {

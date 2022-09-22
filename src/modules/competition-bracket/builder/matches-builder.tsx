@@ -1,14 +1,14 @@
 import { produce } from 'immer';
-import { roundsStore } from './rounds';
+import { bracketStore } from './bracket-store';
 
 export function addMatchOnRound(index: number) {
-  roundsStore.value = produce(roundsStore.value, draft => {
+  bracketStore.value = produce(bracketStore.value, draft => {
     draft[index].matchGeneratorData.matches.push({ spots: [], settings: [] });
   });
 }
 
 export function removeMatchFromRound(index: number, matchIndex: number) {
-  roundsStore.value = produce(roundsStore.value, draft => {
+  bracketStore.value = produce(bracketStore.value, draft => {
     draft[index].matchGeneratorData.matches = draft[index].matchGeneratorData.matches.filter(
       match => match !== draft[index].matchGeneratorData.matches[matchIndex]
     );
@@ -16,7 +16,7 @@ export function removeMatchFromRound(index: number, matchIndex: number) {
 }
 
 export function addPlayerToMatch(index: number, matchIndex: number, generatorType?: string) {
-  roundsStore.value = produce(roundsStore.value, draft => {
+  bracketStore.value = produce(bracketStore.value, draft => {
     const match = draft[index].matchGeneratorData.matches[matchIndex];
 
     switch (generatorType) {
@@ -64,7 +64,7 @@ export function addPlayerToMatch(index: number, matchIndex: number, generatorTyp
 }
 
 export function removePlayerFromMatch(index: number, matchIndex: number, spotIndex: number) {
-  roundsStore.value = produce(roundsStore.value, draft => {
+  bracketStore.value = produce(bracketStore.value, draft => {
     const match = draft[index].matchGeneratorData.matches[matchIndex];
 
     match.spots = match.spots.filter(

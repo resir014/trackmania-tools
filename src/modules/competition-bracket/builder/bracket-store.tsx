@@ -1,11 +1,6 @@
-import { computed } from '@preact/signals-react';
-import { AllParticipant, StructureBuilderV1 } from '../types/builder-types';
-import { roundsStore } from './rounds';
-
-export type SpotTypeSelections = {
-  label: string;
-  value: AllParticipant['spotType'];
-};
+import { computed, signal } from '@preact/signals-react';
+import { BuilderRoundDetail, StructureBuilderV1 } from '../types/builder-types';
+import { SpotTypeSelections } from '../types/store-types';
 
 export const spotTypeSelections: SpotTypeSelections[] = [
   { label: 'Qualifier', value: 'round_challenge_participant' },
@@ -14,7 +9,9 @@ export const spotTypeSelections: SpotTypeSelections[] = [
   { label: 'Leaderboard', value: 'competition_leaderboard' },
 ];
 
+export const bracketStore = signal<BuilderRoundDetail[]>([]);
+
 export const generatedJson = computed<StructureBuilderV1>(() => ({
   version: 1,
-  rounds: roundsStore.value,
+  rounds: bracketStore.value,
 }));
