@@ -28,31 +28,33 @@ export function RoundNameEditor({ initialValue, onChange }: RoundNameEditorProps
   };
 
   return (
-    <form onSubmit={handleEditName} className="flex items-center space-x-2">
+    <form onSubmit={handleEditName}>
       <label htmlFor="roundName" className="sr-only">
         Round name
       </label>
-      <input
-        ref={inputRef}
-        type="text"
-        id="roundName"
-        name="roundName"
-        autoComplete="off"
-        onFocus={() => setIsEditing(true)}
-        className={clsx(
-          'px-2 py-1 border border-transparent rounded-md text-lg font-semibold',
-          isEditing ? 'bg-gray-800 bg-opacity-50' : 'bg-transparent',
-          'hover:bg-gray-800 hover:bg-opacity-50 focus:bg-gray-800 focus:bg-opacity-50',
-          'focus:border-green-500 focus:outline-none focus:ring-green-500'
-        )}
-        onChange={handleChange}
-        value={inputState.value}
-      />
-      {isEditing ? (
-        <GhostedButton type="submit" color="green" rounded icon={CheckIcon} iconOnly>
-          Save
-        </GhostedButton>
-      ) : null}
+      <div className="flex items-center space-x-2">
+        <input
+          ref={inputRef}
+          type="text"
+          id="roundName"
+          name="roundName"
+          autoComplete="off"
+          onFocus={() => setIsEditing(true)}
+          className={clsx(
+            'px-2 py-1 border border-transparent rounded-md text-lg font-semibold',
+            isEditing ? 'bg-gray-800 bg-opacity-50' : 'bg-transparent',
+            'hover:bg-gray-800 hover:bg-opacity-50 focus:bg-gray-800 focus:bg-opacity-50',
+            'focus:border-green-500 focus:outline-none focus:ring-green-500'
+          )}
+          onChange={handleChange}
+          value={inputState.value}
+        />
+        {isEditing ? (
+          <GhostedButton type="submit" color="green" rounded icon={CheckIcon} iconOnly>
+            Save
+          </GhostedButton>
+        ) : null}
+      </div>
     </form>
   );
 }

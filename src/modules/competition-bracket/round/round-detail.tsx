@@ -23,7 +23,7 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
   };
 
   return (
-    <div className="bg-black rounded-tl-2xl rounded-br-2xl overflow-hidden">
+    <div className="bg-black shadow-md rounded-tl-2xl rounded-br-2xl">
       <div className="md:flex md:items-center md:justify-between px-4 py-2 border-b border-gray-700">
         <div className="min-w-0 flex-1">
           <RoundNameEditor
@@ -39,16 +39,21 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
         </div>
         <div className="mt-4 flex md:mt-0 md:ml-4">
           <div className="space-x-4">
-            <SecondaryButton color="red" icon={TrashIcon} onClick={() => removeRound(index)}>
-              Remove round
-            </SecondaryButton>
-            <PrimaryButton icon={PlusIcon} onClick={() => addMatchOnRound(index)}>
+            <PrimaryButton icon={PlusIcon} iconOnly onClick={() => addMatchOnRound(index)}>
               Add match
             </PrimaryButton>
+            <SecondaryButton
+              color="red"
+              icon={TrashIcon}
+              iconOnly
+              onClick={() => removeRound(index)}
+            >
+              Remove round
+            </SecondaryButton>
           </div>
         </div>
       </div>
-      <div className="px-4 py-4">
+      <div className="p-4">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {round.matchGeneratorData.matches.map((match, matchIndex) => (
             <MatchDetail

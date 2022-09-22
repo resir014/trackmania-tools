@@ -1,4 +1,5 @@
 import { produce } from 'immer';
+import { AllParticipant } from '../types/builder-types';
 import { bracketStore } from './bracket-store';
 
 export function addMatchOnRound(index: number) {
@@ -70,5 +71,18 @@ export function removePlayerFromMatch(index: number, matchIndex: number, spotInd
     match.spots = match.spots.filter(
       spot => spot !== draft[index].matchGeneratorData.matches[matchIndex].spots[spotIndex]
     );
+  });
+}
+
+export function updateMatchSpotDetais(
+  index: number,
+  matchIndex: number,
+  spotIndex: number,
+  detail: AllParticipant
+) {
+  bracketStore.value = produce(bracketStore.value, draft => {
+    const match = draft[index].matchGeneratorData.matches[matchIndex];
+
+    match.spots[spotIndex] = detail;
   });
 }

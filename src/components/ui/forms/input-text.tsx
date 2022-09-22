@@ -12,7 +12,7 @@ export const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
       <input
         className={clsx(
           isGroupItem ? 'first:rounded-l-md last:rounded-r-md' : 'shadow-sm rounded-md',
-          'block w-full text-sm bg-black border-gray-700 hover:bg-gray-900 hover:bg-opacity-50 focus:ring-green-500 focus:border-green-500',
+          'block w-full text-sm border-transparent bg-gray-800 focus:ring-green-500 focus:border-green-500',
           className
         )}
         ref={ref}

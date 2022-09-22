@@ -1,4 +1,4 @@
-import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { ClipboardDocumentIcon, TrashIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
 import { SecondaryButton } from '~/components/ui/button';
 import { addPlayerToMatch, removeMatchFromRound } from '../builder/matches-builder';
@@ -14,8 +14,8 @@ export interface MatchDetailProps {
 
 export function MatchDetail({ index, roundIndex, match, generatorType }: MatchDetailProps) {
   return (
-    <div className="border border-gray-700 rounded-lg rounded- overflow-hidden">
-      <div className="flex items-center justify-between px-2 py-1 border-b border-gray-700">
+    <div className="overflow-hidden">
+      <div className="flex items-center justify-between p-4">
         <div className="min-w-0 flex-1">
           <h3 className="text-md font-semibold truncate">Match #{index + 1}</h3>
         </div>
@@ -32,7 +32,7 @@ export function MatchDetail({ index, roundIndex, match, generatorType }: MatchDe
           <SecondaryButton
             color="blue"
             size="xs"
-            icon={PlusIcon}
+            icon={ClipboardDocumentIcon}
             iconOnly
             onClick={() => addPlayerToMatch(roundIndex, index, generatorType)}
           >
@@ -40,7 +40,7 @@ export function MatchDetail({ index, roundIndex, match, generatorType }: MatchDe
           </SecondaryButton>
         </div>
       </div>
-      <div>
+      <div className="p-4 space-y-2">
         {match.spots.map((item, spotIndex) => (
           <SpotDetail
             key={spotIndex}

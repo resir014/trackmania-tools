@@ -9,7 +9,7 @@ export const InputTextarea = React.forwardRef<HTMLTextAreaElement, InputTextarea
     return (
       <textarea
         className={clsx(
-          'shadow-sm rounded-md bg-black border-gray-700 hover:bg-gray-900 hover:bg-opacity-50 focus:ring-green-500 focus:border-green-500',
+          'shadow-sm rounded-md border-transparent bg-gray-800 hover:bg-gray-900 hover:bg-opacity-50 focus:ring-green-500 focus:border-green-500',
           className
         )}
         ref={ref}
