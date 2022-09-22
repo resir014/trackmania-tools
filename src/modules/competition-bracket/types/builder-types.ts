@@ -11,6 +11,8 @@ export type AllParticipant =
   | SeedParticipant
   | LeaderboardParticipant;
 
+export type AllSpotTypes = AllParticipant['spotType'];
+
 export interface MatchSettingsData {
   spots: AllParticipant[];
   settings?: Array<Record<string, unknown>>;
@@ -27,6 +29,8 @@ export interface BuilderRoundDetail {
   matchGeneratorType: 'spot_filler';
   /** Match generator data. */
   matchGeneratorData: MatchGeneratorData;
+  /** Not actually from the API. Defines the default participant type. */
+  defaultSpotType?: AllParticipant['spotType'];
 }
 
 export interface StructureBuilderV1 {

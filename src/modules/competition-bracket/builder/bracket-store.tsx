@@ -1,4 +1,4 @@
-import { computed, signal } from '@preact/signals-react';
+import { computed, effect, signal } from '@preact/signals-react';
 import { BuilderRoundDetail, StructureBuilderV1 } from '../types/builder-types';
 import { SpotTypeSelections } from '../types/store-types';
 
@@ -13,5 +13,14 @@ export const bracketStore = signal<BuilderRoundDetail[]>([]);
 
 export const generatedJson = computed<StructureBuilderV1>(() => ({
   version: 1,
-  rounds: bracketStore.value,
+  // Clean up the `defaultSpotType` from the final object.
+  rounds: bracketStore.value.map(({ name, matchGeneratorType, matchGeneratorData }) => ({
+    name,
+    matchGeneratorType,
+    matchGeneratorData,
+  })),
 }));
+
+effect(() => {
+  console.log(bracketStore.value);
+});

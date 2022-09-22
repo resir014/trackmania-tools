@@ -40,7 +40,7 @@ export function MatchDetail({ index, roundIndex, match, generatorType }: MatchDe
           </SecondaryButton>
         </div>
       </div>
-      <div className="p-4 space-y-2">
+      <div className="px-4 pt-2 pb-4 space-y-2">
         {match.spots.map((item, spotIndex) => (
           <SpotDetail
             key={spotIndex}

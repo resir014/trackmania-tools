@@ -1,14 +1,15 @@
 import { produce } from 'immer';
-import { BuilderRoundDetail } from '../types/builder-types';
+import { AllSpotTypes, BuilderRoundDetail } from '../types/builder-types';
 import { bracketStore } from './bracket-store';
 
-export function addNewRound() {
+export function addNewRound(spotType?: AllSpotTypes) {
   const roundData: BuilderRoundDetail = {
     name: `Round ${bracketStore.value.length + 1}`,
     matchGeneratorType: 'spot_filler',
     matchGeneratorData: {
       matches: [],
     },
+    defaultSpotType: spotType,
   };
 
   bracketStore.value = produce(bracketStore.value, draft => {

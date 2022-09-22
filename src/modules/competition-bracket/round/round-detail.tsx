@@ -1,7 +1,8 @@
 import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { useSignal } from '@preact/signals-react';
 import * as React from 'react';
-import { PrimaryButton, SecondaryButton } from '~/components/ui/button';
+import SimpleBar from 'simplebar-react';
+import { SecondaryButton } from '~/components/ui/button';
 import { addMatchOnRound } from '../builder/matches-builder';
 import { changeRoundName, clearMatchesInRound, removeRound } from '../builder/rounds-builder';
 import { BuilderRoundDetail } from '../types/builder-types';
@@ -15,7 +16,7 @@ export interface RoundDetailProps {
 }
 
 export function RoundDetail({ index, round }: RoundDetailProps) {
-  const placementStore = useSignal<string>('round_challenge_participant');
+  const placementStore = useSignal<string>(round.defaultSpotType ?? 'round_challenge_participant');
 
   const handlePlacementChange = (value: string) => {
     placementStore.value = value;
@@ -23,25 +24,23 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
   };
 
   return (
-    <div className="bg-black shadow-md rounded-tl-2xl rounded-br-2xl">
-      <div className="md:flex md:items-center md:justify-between px-4 py-2 border-b border-gray-700">
+    <div className="shrink-0 basis-full md:basis-6/12 lg:basis-4/12 bg-black shadow-md rounded-tl-md rounded-br-md">
+      <div className="xl:flex xl:items-center xl:justify-between px-4 py-2 border-b border-gray-700">
         <div className="min-w-0 flex-1">
           <RoundNameEditor
             initialValue={round.name}
             onChange={name => changeRoundName(index, name)}
           />
         </div>
-        <div className="mt-4 flex md:mt-0 md:ml-4">
-          <RoundPlacementSelector
-            defaultValue={placementStore.value}
-            onChange={handlePlacementChange}
-          />
-        </div>
-        <div className="mt-4 flex md:mt-0 md:ml-4">
-          <div className="space-x-4">
-            <PrimaryButton icon={PlusIcon} iconOnly onClick={() => addMatchOnRound(index)}>
+        <div className="mt-4 flex xl:mt-0 xl:ml-4">
+          <div className="flex items-center space-x-2">
+            <RoundPlacementSelector
+              defaultValue={placementStore.value}
+              onChange={handlePlacementChange}
+            />
+            <SecondaryButton icon={PlusIcon} iconOnly onClick={() => addMatchOnRound(index)}>
               Add match
-            </PrimaryButton>
+            </SecondaryButton>
             <SecondaryButton
               color="red"
               icon={TrashIcon}
@@ -53,19 +52,21 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
           </div>
         </div>
       </div>
-      <div className="p-4">
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {round.matchGeneratorData.matches.map((match, matchIndex) => (
-            <MatchDetail
-              key={`${matchIndex}`}
-              index={matchIndex}
-              roundIndex={index}
-              match={match}
-              generatorType={placementStore.value}
-            />
-          ))}
+      <SimpleBar className="h-[640px]">
+        <div className="p-4">
+          <div className="grid gap-4 grid-cols-1">
+            {round.matchGeneratorData.matches.map((match, matchIndex) => (
+              <MatchDetail
+                key={`${matchIndex}`}
+                index={matchIndex}
+                roundIndex={index}
+                match={match}
+                generatorType={placementStore.value}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </SimpleBar>
     </div>
   );
 }

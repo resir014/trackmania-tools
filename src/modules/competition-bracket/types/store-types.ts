@@ -1,6 +1,6 @@
-import { AllParticipant } from './builder-types';
+import { AllSpotTypes } from './builder-types';
 
 export type SpotTypeSelections = {
   label: string;
-  value: AllParticipant['spotType'];
+  value: AllSpotTypes;
 };
