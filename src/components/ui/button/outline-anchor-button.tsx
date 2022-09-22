@@ -28,6 +28,7 @@ export const OutlineAnchorButton = React.forwardRef<HTMLAnchorElement, AnchorBut
       rounded,
       icon,
       iconPosition = 'left',
+      iconOnly,
       children,
       ...rest
     },
@@ -47,8 +48,8 @@ export const OutlineAnchorButton = React.forwardRef<HTMLAnchorElement, AnchorBut
       style={style}
       {...rest}
     >
-      {renderButtonIcon({ icon, size, iconPosition })}
-      {children}
+      {renderButtonIcon({ icon, size, iconPosition, iconOnly })}
+      <span {...(iconOnly ? { className: 'sr-only' } : {})}>{children}</span>
     </a>
   )
 );

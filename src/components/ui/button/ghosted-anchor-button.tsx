@@ -24,6 +24,7 @@ export const GhostedAnchorButton = React.forwardRef<HTMLAnchorElement, AnchorBut
       rounded,
       icon,
       iconPosition = 'left',
+      iconOnly,
       children,
       ...rest
     },
@@ -44,7 +45,7 @@ export const GhostedAnchorButton = React.forwardRef<HTMLAnchorElement, AnchorBut
       {...rest}
     >
       {renderButtonIcon({ icon, size, iconPosition })}
-      {children}
+      <span {...(iconOnly ? { className: 'sr-only' } : {})}>{children}</span>
     </a>
   )
 );

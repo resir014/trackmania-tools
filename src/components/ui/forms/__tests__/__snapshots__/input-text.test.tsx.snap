@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputText renders correctly 1`] = `
+<input
+  class="shadow-sm rounded-md focus:ring-green-500 focus:border-green-500 block w-full text-sm border-gray-300"
+  type="text"
+/>
+`;

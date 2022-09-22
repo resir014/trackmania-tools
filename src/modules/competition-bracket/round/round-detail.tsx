@@ -39,22 +39,17 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
         </div>
         <div className="mt-4 flex md:mt-0 md:ml-4">
           <div className="space-x-4">
-            <SecondaryButton
-              size="sm"
-              color="red"
-              icon={TrashIcon}
-              onClick={() => removeRound(index)}
-            >
+            <SecondaryButton color="red" icon={TrashIcon} onClick={() => removeRound(index)}>
               Remove round
             </SecondaryButton>
-            <PrimaryButton size="sm" icon={PlusIcon} onClick={() => addMatchOnRound(index)}>
+            <PrimaryButton icon={PlusIcon} onClick={() => addMatchOnRound(index)}>
               Add match
             </PrimaryButton>
           </div>
         </div>
       </div>
       <div className="px-4 py-4">
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {round.matchGeneratorData.matches.map((match, matchIndex) => (
             <MatchDetail
               key={`${matchIndex}`}

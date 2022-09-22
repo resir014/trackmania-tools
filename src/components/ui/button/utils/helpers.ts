@@ -55,37 +55,41 @@ export function buttonIconClasses(
   switch (size) {
     case 'xs': {
       return [
-        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-2 -mr-0.5' : '-ml-0.5 mr-2']),
+        ...(iconOnly
+          ? ['-ml-0.5 -mr-0.5']
+          : [iconPosition === 'right' ? 'ml-2 -mr-0.5' : '-ml-0.5 mr-2']),
         'h-4 w-4',
       ];
     }
     case 'sm': {
       return [
-        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-2 -mr-0.5' : '-ml-0.5 mr-2']),
+        ...(iconOnly
+          ? ['-ml-0.5 -mr-0.5']
+          : [iconPosition === 'right' ? 'ml-2 -mr-0.5' : '-ml-0.5 mr-2']),
         'h-4 w-4',
       ];
     }
     case 'md': {
       return [
-        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-2 -mr-1' : '-ml-1 mr-2']),
+        ...(iconOnly ? ['-ml-1 -mr-1'] : [iconPosition === 'right' ? 'ml-2 -mr-1' : '-ml-1 mr-2']),
         'h-5 w-5',
       ];
     }
     case 'lg': {
       return [
-        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-3 -mr-1' : '-ml-1 mr-3']),
+        ...(iconOnly ? ['-ml-1 -mr-1'] : [iconPosition === 'right' ? 'ml-3 -mr-1' : '-ml-1 mr-3']),
         'h-5 w-5',
       ];
     }
     case 'xl': {
       return [
-        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-3 -mr-1' : '-ml-1 mr-3']),
+        ...(iconOnly ? ['-ml-1 -mr-1'] : [iconPosition === 'right' ? 'ml-3 -mr-1' : '-ml-1 mr-3']),
         'h-5 w-5',
       ];
     }
     default: {
       return [
-        ...(iconOnly ? [] : [iconPosition === 'right' ? 'ml-2 -mr-1' : '-ml-1 mr-2']),
+        ...(iconOnly ? ['-ml-1 -mr-1'] : [iconPosition === 'right' ? 'ml-2 -mr-1' : '-ml-1 mr-2']),
         'h-5 w-5',
       ];
     }

@@ -29,6 +29,7 @@ export const PrimaryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       rounded,
       icon,
       iconPosition = 'left',
+      iconOnly,
       isLoading,
       loadingText = 'Loading...',
       disabled,
@@ -58,8 +59,11 @@ export const PrimaryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         size,
         additionalClasses: isLoading ? 'animate-spin' : undefined,
         iconPosition,
+        iconOnly,
       })}
-      {isLoading ? loadingText : children}
+      <span {...(iconOnly ? { className: 'sr-only' } : {})}>
+        {isLoading ? loadingText : children}
+      </span>
     </button>
   )
 );

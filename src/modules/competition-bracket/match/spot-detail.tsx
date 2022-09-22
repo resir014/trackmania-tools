@@ -1,6 +1,7 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
 import { SecondaryButton } from '~/components/ui/button';
+import { InputText } from '~/components/ui/forms/input-text';
 import { removePlayerFromMatch } from '../builder/matches-builder';
 import { AllParticipant } from '../types/builder-types';
 
@@ -18,32 +19,10 @@ export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailPr
         return (
           <div className="flex items-center space-x-2">
             <div>
-              <label htmlFor="roundPosition" className="sr-only">
-                Round position
-              </label>
-              <input
-                type="text"
-                inputMode="numeric"
-                name="roundPosition"
-                id="roundPosition"
-                placeholder="Round pos."
-                className="inline-block w-full max-w-[128px] rounded-md bg-black text-white border-gray-700 focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                value={spot.roundPosition}
-              />
-            </div>
-            <div>
               <label htmlFor="rank" className="sr-only">
                 Rank
               </label>
-              <input
-                type="text"
-                inputMode="numeric"
-                name="rank"
-                id="rank"
-                placeholder="Rank"
-                className="inline-block w-full max-w-[128px] rounded-md bg-black text-white border-gray-700 focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                value={spot.rank}
-              />
+              <InputText type="text" inputMode="numeric" name="rank" id="rank" placeholder="Rank" />
             </div>
           </div>
         );
@@ -62,7 +41,6 @@ export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailPr
                 id="roundPosition"
                 placeholder="Round pos."
                 className="inline-block w-full max-w-[128px] rounded-md bg-black text-white border-gray-700 focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                value={spot.roundPosition}
               />
             </div>
             <div>
@@ -76,7 +54,6 @@ export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailPr
                 id="roundPosition"
                 placeholder="Round pos."
                 className="inline-block w-full max-w-[128px] rounded-md bg-black text-white border-gray-700 focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                value={spot.matchPosition}
               />
             </div>
             <div>
@@ -90,7 +67,6 @@ export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailPr
                 id="rank"
                 placeholder="Rank"
                 className="inline-block w-full max-w-[128px] rounded-md bg-black text-white border-gray-700 focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                value={spot.rank}
               />
             </div>
           </div>

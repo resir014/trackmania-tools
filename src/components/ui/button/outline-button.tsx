@@ -31,6 +31,7 @@ export const OutlineButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = 'left',
       isLoading,
       loadingText = 'Loading...',
+      iconOnly,
       disabled,
       children,
       ...rest
@@ -58,8 +59,11 @@ export const OutlineButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         size,
         additionalClasses: isLoading ? 'animate-spin' : undefined,
         iconPosition,
+        iconOnly,
       })}
-      {isLoading ? loadingText : children}
+      <span {...(iconOnly ? { className: 'sr-only' } : {})}>
+        {isLoading ? loadingText : children}
+      </span>
     </button>
   )
 );
