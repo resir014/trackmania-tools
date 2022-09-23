@@ -1,34 +1,37 @@
 /* This example requires Tailwind CSS v2.0+ */
 import * as React from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
-import { OutlineButton, PrimaryButton } from '../button';
+import { CheckIcon } from '@heroicons/react/24/outline';
+import { OutlineButton } from './button';
 
-export interface ConfirmDialogPromptProps {
+export interface ModalProps {
   isOpen?: boolean;
   title: string;
-  description: string;
-  confirmText?: string;
-  cancelText?: string;
-  onConfirm?: () => void;
-  onCancel?: () => void;
+  message?: string;
+  content?: React.ReactNode;
+  onClose?: () => void;
+  actions?: React.ReactNode;
 }
 
-export default function ConfirmDialogPrompt({
-  isOpen,
-  title,
-  description,
-  confirmText = 'Confirm',
-  cancelText = 'Cancel',
-  onConfirm,
-  onCancel,
-}: ConfirmDialogPromptProps) {
-  const cancelButtonRef = React.useRef(null);
+export default function Modal({ isOpen, title, message, content, onClose, actions }: ModalProps) {
+  const closeButtonRef = React.useRef(null);
 
   const handleCloseDialog = () => {
-    if (onCancel) {
-      onCancel();
+    if (onClose) {
+      onClose();
     }
+  };
+
+  const renderContent = () => {
+    if (content) {
+      return content;
+    }
+
+    if (message) {
+      return <p className="text-sm text-gray-300">{message}</p>;
+    }
+
+    return null;
   };
 
   return (
@@ -36,7 +39,7 @@ export default function ConfirmDialogPrompt({
       <Dialog
         as="div"
         className="relative z-10"
-        initialFocus={cancelButtonRef}
+        initialFocus={closeButtonRef}
         onClose={handleCloseDialog}
       >
         <Transition.Child
@@ -48,7 +51,7 @@ export default function ConfirmDialogPrompt({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-75 transition-opacity" />
+          <div className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -64,30 +67,29 @@ export default function ConfirmDialogPrompt({
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-tl-lg rounded-br-lg bg-gray-900 px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div>
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-900">
-                    <ExclamationTriangleIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-900">
+                    <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
                   </div>
                   <div className="mt-3 text-center sm:mt-5">
                     <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-white">
                       {title}
                     </Dialog.Title>
-                    <div className="mt-2">
-                      <p className="text-sm text-gray-300">{description}</p>
-                    </div>
+                    <div className="mt-2">{renderContent()}</div>
                   </div>
                 </div>
-                <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                  <OutlineButton
-                    type="button"
-                    color="gray"
-                    onClick={onCancel}
-                    ref={cancelButtonRef}
-                  >
-                    {cancelText}
-                  </OutlineButton>
-                  <PrimaryButton type="button" block color="red" onClick={onConfirm}>
-                    {confirmText}
-                  </PrimaryButton>
+                <div className="mt-5 sm:mt-6">
+                  <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3">
+                    <OutlineButton
+                      type="button"
+                      color="gray"
+                      block
+                      onClick={handleCloseDialog}
+                      ref={closeButtonRef}
+                    >
+                      Close
+                    </OutlineButton>
+                    {actions ? actions : null}
+                  </div>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

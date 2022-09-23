@@ -27,6 +27,7 @@
     "@heroicons/react": "^2.0.11",
     "@preact/signals-react": "^1.1.0",
     "clsx": "^1.2.1",
+    "copee": "^1.0.6",
     "immer": "^9.0.15",
     "next": "^12.3.0",
     "next-seo": "^5.5.0",

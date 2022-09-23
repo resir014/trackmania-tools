@@ -29,8 +29,8 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
     const confirmed = await confirm({
       title: 'Remove round',
       message: 'Are you sure you want to remove this round? This is irreversible!',
-      confirmText: 'Yes',
-      cancelText: 'No',
+      confirmText: 'Delete',
+      cancelText: 'Cancel',
     });
 
     if (confirmed) {
@@ -62,7 +62,7 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
           </div>
         </div>
       </div>
-      <SimpleBar className="h-[640px]">
+      <SimpleBar className="h-[600px]">
         <div className="p-4">
           <div className="grid gap-4 grid-cols-1">
             {round.matchGeneratorData.matches.map((match, matchIndex) => (

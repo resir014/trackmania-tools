@@ -1,4 +1,10 @@
-import { CheckCircleIcon, PlusIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowLeftCircleIcon,
+  ChartBarIcon,
+  CheckCircleIcon,
+  HashtagIcon,
+  PlusIcon,
+} from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import * as React from 'react';
 import { SecondaryButton } from '~/components/ui/button';
@@ -19,7 +25,7 @@ export function AddNewRoundButton({ className, onCreateRound }: AddNewRoundButto
   return (
     <div
       className={clsx(
-        'shrink-0 basis-full md:basis-6/12 lg:basis-4/12 xl:min-h-[695px] bg-black shadow-md rounded-tl-md rounded-br-md',
+        'shrink-0 basis-full md:basis-6/12 lg:basis-4/12 xl:min-h-[655px] bg-black shadow-md rounded-tl-md rounded-br-md',
         className
       )}
     >
@@ -42,7 +48,7 @@ export function AddNewRoundButton({ className, onCreateRound }: AddNewRoundButto
           <SecondaryButton
             block
             color="gray"
-            icon={CheckCircleIcon}
+            icon={ArrowLeftCircleIcon}
             onClick={handleClick('match_participant')}
           >
             From Previous Round
@@ -50,7 +56,7 @@ export function AddNewRoundButton({ className, onCreateRound }: AddNewRoundButto
           <SecondaryButton
             block
             color="gray"
-            icon={CheckCircleIcon}
+            icon={HashtagIcon}
             onClick={handleClick('competition_participant')}
           >
             From Seed
@@ -58,7 +64,7 @@ export function AddNewRoundButton({ className, onCreateRound }: AddNewRoundButto
           <SecondaryButton
             block
             color="gray"
-            icon={CheckCircleIcon}
+            icon={ChartBarIcon}
             onClick={handleClick('competition_leaderboard')}
           >
             From Leaderboard
