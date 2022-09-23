@@ -2,7 +2,7 @@
 
 exports[`InputText renders correctly 1`] = `
 <textarea
-  class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full text-sm border-gray-300 rounded-md"
+  class="shadow-sm rounded-md border-transparent bg-gray-800 hover:bg-gray-900 hover:bg-opacity-50 focus:ring-green-500 focus:border-green-500"
   rows="4"
 />
 `;

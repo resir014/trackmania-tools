@@ -57,7 +57,7 @@ export function BracketBuilder() {
             actions={
               <div className="flex items-center space-x-4">
                 <PrimaryButton icon={ArrowDownTrayIcon} color="blue" onClick={openGeneratorModal}>
-                  Structure file
+                  Generate
                 </PrimaryButton>
                 <PrimaryButton icon={TrashIcon} color="red" onClick={handleConfirmClear}>
                   Clear

@@ -2,7 +2,7 @@
 
 exports[`InputText renders correctly 1`] = `
 <input
-  class="shadow-sm rounded-md focus:ring-green-500 focus:border-green-500 block w-full text-sm border-gray-300"
+  class="shadow-sm rounded-md block w-full text-sm border-transparent bg-gray-800 focus:ring-green-500 focus:border-green-500"
   type="text"
 />
 `;

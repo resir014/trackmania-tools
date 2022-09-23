@@ -76,18 +76,21 @@ export default function ConfirmDialogPrompt({
                     </div>
                   </div>
                 </div>
-                <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                  <OutlineButton
-                    type="button"
-                    color="gray"
-                    onClick={onCancel}
-                    ref={cancelButtonRef}
-                  >
-                    {cancelText}
-                  </OutlineButton>
-                  <PrimaryButton type="button" block color="red" onClick={onConfirm}>
-                    {confirmText}
-                  </PrimaryButton>
+                <div className="mt-5 sm:mt-6">
+                  <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3">
+                    <PrimaryButton type="button" block color="red" onClick={onConfirm}>
+                      {confirmText}
+                    </PrimaryButton>
+                    <OutlineButton
+                      type="button"
+                      color="gray"
+                      block
+                      onClick={onCancel}
+                      ref={cancelButtonRef}
+                    >
+                      {cancelText}
+                    </OutlineButton>
+                  </div>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
