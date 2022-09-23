@@ -2,7 +2,14 @@ import * as React from 'react';
 import { NextSeo } from 'next-seo';
 import { DefaultLayout } from '~/components/default-layout';
 import { Page } from '~/components/page';
-import { BracketBuilder } from '~/modules/bracket-builder/bracket-builder';
+import dynamic from 'next/dynamic';
+
+const BracketBuilderModule = dynamic(
+  () => import('~/modules/bracket-builder/bracket-builder').then(mod => mod.BracketBuilder),
+  {
+    ssr: false,
+  }
+);
 
 export default function BracketBuilderPage() {
   return (
@@ -18,7 +25,7 @@ export default function BracketBuilderPage() {
       />
       <DefaultLayout>
         <Page subBrand="Bracket Builder">
-          <BracketBuilder />
+          <BracketBuilderModule />
         </Page>
       </DefaultLayout>
     </>
