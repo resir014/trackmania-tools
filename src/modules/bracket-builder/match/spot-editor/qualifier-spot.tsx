@@ -27,25 +27,23 @@ export function QualifierSpot({ spot, onChange }: QualifierSpotProps) {
   };
 
   return (
-    <div className="flex items-center space-x-2 flex-1">
-      <div className="flex-1">
-        <label htmlFor="rank" className="sr-only">
-          Rank
-        </label>
-        <InputAddonGroup className="w-full">
-          <InputAddonText>#</InputAddonText>
-          <InputText
-            type="text"
-            inputMode="numeric"
-            name="rank"
-            id="rank"
-            autoComplete="off"
-            className="pl-7"
-            onChange={handleChange}
-            value={formState}
-          />
-        </InputAddonGroup>
-      </div>
+    <div className="flex-1">
+      <label htmlFor="rank" className="sr-only">
+        Rank
+      </label>
+      <InputAddonGroup className="w-full">
+        <InputAddonText>#</InputAddonText>
+        <InputText
+          type="text"
+          inputMode="numeric"
+          name="rank"
+          id="rank"
+          autoComplete="off"
+          className="pl-7"
+          onChange={handleChange}
+          value={formState}
+        />
+      </InputAddonGroup>
     </div>
   );
 }

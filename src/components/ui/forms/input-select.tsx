@@ -11,7 +11,7 @@ export const InputSelect = React.forwardRef<HTMLSelectElement, SelectProps>(
     <select
       className={clsx(
         block ? 'block' : 'inline-block',
-        'w-full text-sm shadow-sm rounded-md border-transparent bg-gray-800 focus:ring-green-500 focus:border-green-500',
+        'w-full pr-10 text-sm shadow-sm rounded-md border-transparent bg-gray-800 focus:ring-green-500 focus:border-green-500',
         className
       )}
       ref={ref}

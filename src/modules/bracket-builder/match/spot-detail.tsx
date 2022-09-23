@@ -65,7 +65,7 @@ export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailPr
         <div className="pointer-events-none text-center min-w-[24px]">
           <span className="text-gray-500">{index + 1}</span>
         </div>
-        {renderSpots()}
+        <div className="flex items-center space-x-2 flex-1">{renderSpots()}</div>
       </div>
       <div className="ml-2">
         <SecondaryButton

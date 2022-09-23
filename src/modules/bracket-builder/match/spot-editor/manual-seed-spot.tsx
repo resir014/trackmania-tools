@@ -27,25 +27,23 @@ export function ManualSeedSpot({ spot, onChange }: ManualSeedSpotProps) {
   };
 
   return (
-    <div className="flex items-center space-x-2">
-      <div>
-        <label htmlFor="seed" className="sr-only">
-          Seed
-        </label>
-        <InputAddonGroup>
-          <InputAddonText>#</InputAddonText>
-          <InputText
-            type="text"
-            inputMode="numeric"
-            name="seed"
-            id="seed"
-            autoComplete="off"
-            className="pl-7"
-            onChange={handleChange}
-            value={formState}
-          />
-        </InputAddonGroup>
-      </div>
+    <div className="flex-1">
+      <label htmlFor="seed" className="sr-only">
+        Seed
+      </label>
+      <InputAddonGroup>
+        <InputAddonText>#</InputAddonText>
+        <InputText
+          type="text"
+          inputMode="numeric"
+          name="seed"
+          id="seed"
+          autoComplete="off"
+          className="pl-7"
+          onChange={handleChange}
+          value={formState}
+        />
+      </InputAddonGroup>
     </div>
   );
 }
