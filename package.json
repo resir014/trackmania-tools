@@ -25,7 +25,7 @@
     "@fontsource/jetbrains-mono": "^4.5.10",
     "@headlessui/react": "^1.7.2",
     "@heroicons/react": "^2.0.11",
-    "@preact/signals-react": "^1.1.0",
+    "@preact/signals-core": "^1.2.0",
     "clsx": "^1.2.1",
     "copee": "^1.0.6",
     "immer": "^9.0.15",

@@ -1,5 +1,5 @@
-import { useSignal } from '@preact/signals-react';
 import * as React from 'react';
+import { useSignal } from '~/utils/signals';
 import ConfirmDialogPrompt from './confirm-dialog-prompt';
 
 interface ConfirmDialogOptions {

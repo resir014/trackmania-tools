@@ -1,8 +1,8 @@
-import { useSignal } from '@preact/signals-react';
 import * as React from 'react';
 import { InputAddonGroup } from '~/components/ui/forms/input-addon-group';
 import { InputAddonText } from '~/components/ui/forms/input-addon-text';
 import { InputText } from '~/components/ui/forms/input-text';
+import { useSignal } from '~/utils/signals';
 import { PreviousRoundParticipant } from '../../types/participant-types';
 
 export interface PreviousRoundSpotProps {

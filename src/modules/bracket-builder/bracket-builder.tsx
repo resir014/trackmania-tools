@@ -1,11 +1,11 @@
 import { ArrowDownTrayIcon, QuestionMarkCircleIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { useSignal } from '@preact/signals-react';
 import * as React from 'react';
 import { PageContent } from '~/components/page-content';
 import { PageHeader } from '~/components/page-header';
 import { PrimaryButton } from '~/components/ui/button';
 import { useConfirmDialog } from '~/components/ui/confirm-dialog';
 import Modal from '~/components/ui/modal';
+import { useSignal } from '~/utils/signals';
 import { bracketStore, generatedJson } from './builder/bracket-store';
 import { addNewRound, clearAllRounds } from './builder/rounds-builder';
 import AboutModal from './components/about-modal';

@@ -1,8 +1,8 @@
 import { CheckIcon, ClipboardIcon } from '@heroicons/react/24/outline';
-import { useSignal } from '@preact/signals-react';
 import { toClipboard } from 'copee';
 import * as React from 'react';
 import { GhostedButton } from '~/components/ui/button';
+import { useSignal } from '~/utils/signals';
 
 export interface GeneratedTextProps {
   builderText: string;

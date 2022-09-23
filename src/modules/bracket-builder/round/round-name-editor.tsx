@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { useSignal } from '@preact/signals-react';
-import { GhostedButton } from '~/components/ui/button';
 import { CheckIcon } from '@heroicons/react/24/outline';
+import * as React from 'react';
 import clsx from 'clsx';
+import { GhostedButton } from '~/components/ui/button';
+import { useSignal } from '~/utils/signals';
 
 export interface RoundNameEditorProps {
   initialValue?: string;

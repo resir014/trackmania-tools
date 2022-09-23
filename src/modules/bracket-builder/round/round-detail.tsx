@@ -1,9 +1,9 @@
 import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { useSignal } from '@preact/signals-react';
 import * as React from 'react';
 import SimpleBar from 'simplebar-react';
 import { SecondaryButton } from '~/components/ui/button';
 import { useConfirmDialog } from '~/components/ui/confirm-dialog';
+import { useSignal } from '~/utils/signals';
 import { addMatchOnRound } from '../builder/matches-builder';
 import { changeRoundName, clearMatchesInRound, removeRound } from '../builder/rounds-builder';
 import { BuilderRoundDetail } from '../types/builder-types';
