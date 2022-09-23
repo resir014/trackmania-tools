@@ -23,7 +23,7 @@ export default function CustomErrorPage({ statusCode, title }: ErrorProps) {
 
   return (
     <>
-      <NextSeo title={`${statusCode}: ${errorMessage}`} noindex />
+      <NextSeo title={`${statusCode || 0}: ${errorMessage}`} noindex />
       <DefaultLayout>
         <Page>
           <PageContent className="sm:py-12 md:py-18 lg:py-24">
