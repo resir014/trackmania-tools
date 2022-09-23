@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { InputAddonGroup } from '~/components/ui/forms/input-addon-group';
 import { InputAddonText } from '~/components/ui/forms/input-addon-text';
+import { InputSelect } from '~/components/ui/forms/input-select';
 import { InputText } from '~/components/ui/forms/input-text';
+import { useBracketStore } from '../../builder/bracket-store';
 import { PreviousRoundParticipant } from '../../types/participant-types';
 
 export interface PreviousRoundSpotProps {
@@ -15,7 +17,14 @@ export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
   const [matchPosInputState, setMatchPosInputState] = React.useState(spot.matchPosition.toString());
   const [rankInputState, setRankInputState] = React.useState(spot.rank.toString());
 
-  const handleRoundPosChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const roundOptions = useBracketStore(state =>
+    state.rounds.map((round, index) => ({
+      label: round.name,
+      value: index,
+    }))
+  );
+
+  const handleRoundPosChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
     setRoundPosInputState(e.target.value);
     const posAsNumber = parseInt(roundPosInputState, 10);
@@ -53,26 +62,26 @@ export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
 
   return (
     <div className="flex items-center space-x-2">
-      <div>
+      <div className="flex-1">
         <label htmlFor="roundPosition" className="sr-only">
           Round position
         </label>
-        <InputAddonGroup>
-          <InputAddonText>R</InputAddonText>
-          <InputText
-            type="text"
-            inputMode="numeric"
-            name="rank"
-            id="rank"
-            autoComplete="off"
-            className="pl-7"
-            value={roundPosInputState}
-            onChange={handleRoundPosChange}
-          />
-        </InputAddonGroup>
+        <InputSelect
+          name="roundPosition"
+          id="roundPosition"
+          className="w-full"
+          value={roundPosInputState}
+          onChange={handleRoundPosChange}
+        >
+          {roundOptions.map(opt => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </InputSelect>
       </div>
-      <div>
-        <label htmlFor="roundPosition" className="sr-only">
+      <div className="flex-1">
+        <label htmlFor="matchPosition" className="sr-only">
           Match position
         </label>
         <InputAddonGroup>
@@ -80,8 +89,8 @@ export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
           <InputText
             type="text"
             inputMode="numeric"
-            name="rank"
-            id="rank"
+            name="matchPosition"
+            id="matchPosition"
             autoComplete="off"
             className="pl-7"
             value={matchPosInputState}
@@ -89,7 +98,7 @@ export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
           />
         </InputAddonGroup>
       </div>
-      <div>
+      <div className="flex-1">
         <label htmlFor="rank" className="sr-only">
           Rank
         </label>
