@@ -8,7 +8,10 @@
     "isExternal": true
   },
   {
-    "name": "untitled-1",
-    "title": "Coming soon..."
+    "name": "bracket-builder",
+    "title": "Bracket Builder",
+    "description": "A supplementary tool to generate brackets for the official Trackmania competition tool.",
+    "url": "/bracket-builder",
+    "logo": "/static/bracket-builder-logo-white.png"
   }
 ]

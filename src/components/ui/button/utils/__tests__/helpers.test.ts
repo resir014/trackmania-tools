@@ -79,7 +79,7 @@ describe('outlineButtonColors', () => {
   test.each`
     color           | expected
     ${'blue'}       | ${'text-blue-500 border-blue-500 hover:bg-blue-900'}
-    ${'gray'}       | ${'text-gray-700 border-gray-700 hover:bg-gray-900'}
+    ${'gray'}       | ${'text-gray-200 border-gray-200 hover:bg-gray-800'}
     ${'green'}      | ${'text-green-500 border-green-500 hover:bg-green-900'}
     ${'indigo'}     | ${'text-indigo-500 border-indigo-500 hover:bg-indigo-900'}
     ${'light-blue'} | ${'text-light-blue-400 border-light-blue-400 hover:bg-light-blue-900'}
