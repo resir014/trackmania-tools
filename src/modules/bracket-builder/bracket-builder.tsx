@@ -1,7 +1,6 @@
 import { ArrowDownTrayIcon, QuestionMarkCircleIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { useSignal } from '@preact/signals-react';
 import * as React from 'react';
-import { Page } from '~/components/page';
 import { PageContent } from '~/components/page-content';
 import { PageHeader } from '~/components/page-header';
 import { PrimaryButton } from '~/components/ui/button';
@@ -49,7 +48,7 @@ export function BracketBuilder() {
   };
 
   return (
-    <Page subBrand="Bracket Builder">
+    <>
       <PageContent className="sm:py-12">
         <div className="container mx-auto space-y-8">
           <PageHeader
@@ -90,6 +89,6 @@ export function BracketBuilder() {
         onClose={closeGeneratorModal}
       />
       <AboutModal isOpen={aboutModalState.value} onClose={closeAboutModal} />
-    </Page>
+    </>
   );
 }
