@@ -1,0 +1,3 @@
+.simplebar-scrollbar::before {
+  @apply bg-gray-500;
+}

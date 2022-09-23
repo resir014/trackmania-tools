@@ -30,7 +30,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       }
 
       return (
-        <Link href={project.url}>
+        <Link href={project.url} as={project.url}>
           <a className="helper-link-cover">{project.title}</a>
         </Link>
       );

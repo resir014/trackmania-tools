@@ -1,12 +1,16 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import * as React from 'react';
 import { DefaultSeo } from 'next-seo';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import siteMetadata from '~/modules/data/site-metadata';
 import { defaultOpenGraph, defaultTwitterCard } from '~/utils/seo';
+import { ConfirmDialogProvider } from '~/components/ui/confirm-dialog';
 
 import '~/styles/fonts';
 import '~/styles/globals.css';
+import 'simplebar/dist/simplebar.min.css';
+import '~/styles/simplebar-custom.css';
 
 export default function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   return (
@@ -17,6 +21,13 @@ export default function MyApp({ Component, pageProps, router }: AppProps): JSX.E
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <noscript>
+          <style>
+            {`[data-simplebar] {
+              overflow: auto;
+            }`}
+          </style>
+        </noscript>
       </Head>
 
       <DefaultSeo
@@ -27,7 +38,9 @@ export default function MyApp({ Component, pageProps, router }: AppProps): JSX.E
         twitter={defaultTwitterCard}
       />
 
-      <Component {...pageProps} />
+      <ConfirmDialogProvider>
+        <Component {...pageProps} />
+      </ConfirmDialogProvider>
     </>
   );
 }
