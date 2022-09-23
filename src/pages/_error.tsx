@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const statusCodes: { [code: number]: string } = {
   400: 'Bad Request',
-  404: 'This page could not be found',
+  404: 'This page could not be found.',
   405: 'Method Not Allowed',
   500: 'Internal Server Error',
   0: 'An unknown error has occured.',
@@ -28,7 +28,7 @@ export default function CustomErrorPage({ statusCode, title }: ErrorProps) {
         <Page>
           <PageContent className="sm:py-12 md:py-18 lg:py-24">
             <div className="space-y-4 text-center">
-              <h1 className="text-3xl md:text-4xl font-semibold">{`${errorMessage}.`}</h1>
+              <h1 className="text-3xl md:text-4xl font-semibold">{`${errorMessage}`}</h1>
               <p>Click the winke below to go back home.</p>
               <p>
                 <Link href="/">

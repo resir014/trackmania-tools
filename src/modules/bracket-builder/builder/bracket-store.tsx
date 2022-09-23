@@ -1,4 +1,4 @@
-import { computed, effect, signal } from '@preact/signals-react';
+import { computed, signal } from '@preact/signals-react';
 import { BuilderRoundDetail, StructureBuilderV1 } from '../types/builder-types';
 import { SpotTypeSelections } from '../types/store-types';
 
@@ -20,7 +20,3 @@ export const generatedJson = computed<StructureBuilderV1>(() => ({
     matchGeneratorData,
   })),
 }));
-
-effect(() => {
-  console.log(bracketStore.value);
-});
