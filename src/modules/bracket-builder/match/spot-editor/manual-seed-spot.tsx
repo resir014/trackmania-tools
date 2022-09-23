@@ -16,12 +16,13 @@ export function ManualSeedSpot({ spot, onChange }: ManualSeedSpotProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setFormState(e.target.value);
-    const seedAsNumber = parseInt(formState, 10);
+    const seedAsNumber = parseInt(e.target.value, 10);
 
     // Check if input value is valid number before updating rank state
     if (onChange && isFinite(seedAsNumber)) {
-      setUpdateSpot(prevState => ({ ...prevState, seed: seedAsNumber }));
-      onChange(updateSpot);
+      const nextState = { ...updateSpot, seed: seedAsNumber };
+      setUpdateSpot(nextState);
+      onChange(nextState);
     }
   };
 

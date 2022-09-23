@@ -27,36 +27,39 @@ export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
   const handleRoundPosChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
     setRoundPosInputState(e.target.value);
-    const posAsNumber = parseInt(roundPosInputState, 10);
+    const posAsNumber = parseInt(e.target.value, 10);
 
     // Check if input value is valid number before updating state
     if (onChange && isFinite(posAsNumber)) {
-      setUpdateSpot(prevState => ({ ...prevState, roundPosition: posAsNumber }));
-      onChange(updateSpot);
+      const nextState = { ...updateSpot, roundPosition: posAsNumber };
+      setUpdateSpot(nextState);
+      onChange(nextState);
     }
   };
 
   const handleMatchPosChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setMatchPosInputState(e.target.value);
-    const posAsNumber = parseInt(matchPosInputState, 10);
+    const posAsNumber = parseInt(e.target.value, 10);
 
     // Check if input value is valid number before updating state
     if (onChange && isFinite(posAsNumber)) {
-      setUpdateSpot(prevState => ({ ...prevState, matchPosition: posAsNumber }));
-      onChange(updateSpot);
+      const nextState = { ...updateSpot, matchPosition: posAsNumber };
+      setUpdateSpot(nextState);
+      onChange(nextState);
     }
   };
 
   const handleRankChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setRankInputState(e.target.value);
-    const rankAsNumber = parseInt(rankInputState, 10);
+    const rankAsNumber = parseInt(e.target.value, 10);
 
     // Check if input value is valid number before updating state
     if (onChange && isFinite(rankAsNumber)) {
-      setUpdateSpot(prevState => ({ ...prevState, rank: rankAsNumber }));
-      onChange(updateSpot);
+      const nextState = { ...updateSpot, rank: rankAsNumber };
+      setUpdateSpot(nextState);
+      onChange(nextState);
     }
   };
 

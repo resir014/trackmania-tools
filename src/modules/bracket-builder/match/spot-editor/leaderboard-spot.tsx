@@ -16,12 +16,13 @@ export function LeaderboardSpot({ spot, onChange }: LeaderboardSpotProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setFormState(e.target.value);
-    const rankAsNumber = parseInt(formState, 10);
+    const rankAsNumber = parseInt(e.target.value, 10);
 
     // Check if input value is valid number before updating rank state
     if (onChange && isFinite(rankAsNumber)) {
-      setUpdateSpot(prevState => ({ ...prevState, rank: rankAsNumber }));
-      onChange(updateSpot);
+      const nextState = { ...updateSpot, rank: rankAsNumber };
+      setUpdateSpot(nextState);
+      onChange(nextState);
     }
   };
 
