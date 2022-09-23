@@ -29,7 +29,7 @@ export function AddNewRoundButton({ className, onCreateRound }: AddNewRoundButto
         className
       )}
     >
-      <div className="md:flex md:items-center md:justify-between px-4 py-2 border-b border-gray-700">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-gray-700">
         <div className="min-w-0 flex-1">
           <h3 className="text-lg font-semibold leading-[38px]">Add round</h3>
         </div>
