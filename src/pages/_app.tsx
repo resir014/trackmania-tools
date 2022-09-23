@@ -5,6 +5,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import siteMetadata from '~/modules/data/site-metadata';
 import { defaultOpenGraph, defaultTwitterCard } from '~/utils/seo';
+import { ConfirmDialogProvider } from '~/components/ui/confirm-dialog';
 
 import '~/styles/fonts';
 import '~/styles/globals.css';
@@ -37,7 +38,9 @@ export default function MyApp({ Component, pageProps, router }: AppProps): JSX.E
         twitter={defaultTwitterCard}
       />
 
-      <Component {...pageProps} />
+      <ConfirmDialogProvider>
+        <Component {...pageProps} />
+      </ConfirmDialogProvider>
     </>
   );
 }

@@ -21,6 +21,10 @@ export function removeRound(index: number) {
   bracketStore.value = bracketStore.value.filter(item => item !== bracketStore.value[index]);
 }
 
+export function clearAllRounds() {
+  bracketStore.value = [];
+}
+
 export function changeRoundName(index: number, name: string) {
   bracketStore.value = produce(bracketStore.value, draft => {
     draft[index].name = name;

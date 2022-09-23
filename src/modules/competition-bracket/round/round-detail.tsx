@@ -3,6 +3,7 @@ import { useSignal } from '@preact/signals-react';
 import * as React from 'react';
 import SimpleBar from 'simplebar-react';
 import { SecondaryButton } from '~/components/ui/button';
+import { useConfirmDialog } from '~/components/ui/confirm-dialog';
 import { addMatchOnRound } from '../builder/matches-builder';
 import { changeRoundName, clearMatchesInRound, removeRound } from '../builder/rounds-builder';
 import { BuilderRoundDetail } from '../types/builder-types';
@@ -16,11 +17,25 @@ export interface RoundDetailProps {
 }
 
 export function RoundDetail({ index, round }: RoundDetailProps) {
+  const { confirm } = useConfirmDialog();
   const placementStore = useSignal<string>(round.defaultSpotType ?? 'round_challenge_participant');
 
   const handlePlacementChange = (value: string) => {
     placementStore.value = value;
     clearMatchesInRound(index);
+  };
+
+  const handleRemoveRound = async () => {
+    const confirmed = await confirm({
+      title: 'Remove round',
+      message: 'Are you sure you want to remove this round? This is irreversible!',
+      confirmText: 'Yes',
+      cancelText: 'No',
+    });
+
+    if (confirmed) {
+      removeRound(index);
+    }
   };
 
   return (
@@ -41,12 +56,7 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
             <SecondaryButton icon={PlusIcon} iconOnly onClick={() => addMatchOnRound(index)}>
               Add match
             </SecondaryButton>
-            <SecondaryButton
-              color="red"
-              icon={TrashIcon}
-              iconOnly
-              onClick={() => removeRound(index)}
-            >
+            <SecondaryButton color="red" icon={TrashIcon} iconOnly onClick={handleRemoveRound}>
               Remove round
             </SecondaryButton>
           </div>
