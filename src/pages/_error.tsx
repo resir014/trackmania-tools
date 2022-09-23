@@ -12,10 +12,14 @@ const statusCodes: { [code: number]: string } = {
   404: 'This page could not be found',
   405: 'Method Not Allowed',
   500: 'Internal Server Error',
+  0: 'An unknown error has occured.',
 };
 
 export default function CustomErrorPage({ statusCode, title }: ErrorProps) {
-  const errorMessage = React.useMemo(() => title ?? statusCodes[statusCode], [statusCode, title]);
+  const errorMessage = React.useMemo(
+    () => title ?? statusCodes[statusCode || 0],
+    [statusCode, title]
+  );
 
   return (
     <>
