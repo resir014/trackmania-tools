@@ -1,7 +1,7 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
 import { SecondaryButton } from '~/components/ui/button';
-import { removePlayerFromMatch, updateMatchSpotDetais } from '../builder/matches-builder';
+import { useBracketStore } from '../builder/bracket-store';
 import { AllParticipant } from '../types/builder-types';
 import { LeaderboardSpot } from './spot-editor/leaderboard-spot';
 import { ManualSeedSpot } from './spot-editor/manual-seed-spot';
@@ -16,13 +16,16 @@ export interface SpotDetailProps {
 }
 
 export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailProps) {
+  const updateMatchSpotDetails = useBracketStore(state => state.updateMatchSpotDetails);
+  const removePlayerFromMatch = useBracketStore(state => state.removePlayerFromMatch);
+
   const renderSpots = () => {
     switch (spot.spotType) {
       case 'round_challenge_participant': {
         return (
           <QualifierSpot
             spot={spot}
-            onChange={value => updateMatchSpotDetais(roundIndex, matchIndex, index, value)}
+            onChange={value => updateMatchSpotDetails(roundIndex, matchIndex, index, value)}
           />
         );
       }
@@ -30,7 +33,7 @@ export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailPr
         return (
           <PreviousRoundSpot
             spot={spot}
-            onChange={value => updateMatchSpotDetais(roundIndex, matchIndex, index, value)}
+            onChange={value => updateMatchSpotDetails(roundIndex, matchIndex, index, value)}
           />
         );
       }
@@ -38,7 +41,7 @@ export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailPr
         return (
           <ManualSeedSpot
             spot={spot}
-            onChange={value => updateMatchSpotDetais(roundIndex, matchIndex, index, value)}
+            onChange={value => updateMatchSpotDetails(roundIndex, matchIndex, index, value)}
           />
         );
       }
@@ -46,7 +49,7 @@ export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailPr
         return (
           <LeaderboardSpot
             spot={spot}
-            onChange={value => updateMatchSpotDetais(roundIndex, matchIndex, index, value)}
+            onChange={value => updateMatchSpotDetails(roundIndex, matchIndex, index, value)}
           />
         );
       }

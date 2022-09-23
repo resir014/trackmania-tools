@@ -5,9 +5,7 @@ import { PageHeader } from '~/components/page-header';
 import { PrimaryButton } from '~/components/ui/button';
 import { useConfirmDialog } from '~/components/ui/confirm-dialog';
 import Modal from '~/components/ui/modal';
-import { useSignal } from '~/utils/signals';
-import { bracketStore, generatedJson } from './builder/bracket-store';
-import { addNewRound, clearAllRounds } from './builder/rounds-builder';
+import { useBracketStore, useGeneratedJSON } from './builder/bracket-store';
 import AboutModal from './components/about-modal';
 import { AddNewRoundButton } from './components/add-new-round-button';
 import { GeneratedText } from './components/generated-copier';
@@ -15,8 +13,12 @@ import { RoundDetail } from './round/round-detail';
 
 export function BracketBuilder() {
   const { confirm } = useConfirmDialog();
-  const generatorModalState = useSignal(false);
-  const aboutModalState = useSignal(false);
+  const rounds = useBracketStore(state => state.rounds);
+  const addNewRound = useBracketStore(state => state.addNewRound);
+  const clearAllRounds = useBracketStore(state => state.clearAllRounds);
+  const generatedJSON = useGeneratedJSON();
+  const [isGeneratorModalOpen, setIsGeneratorModalOpen] = React.useState(false);
+  const [isAboutModalOpen, setIsAboutModalOpen] = React.useState(false);
 
   const handleConfirmClear = async () => {
     const confirmed = await confirm({
@@ -32,19 +34,19 @@ export function BracketBuilder() {
   };
 
   const openGeneratorModal = () => {
-    generatorModalState.value = true;
+    setIsGeneratorModalOpen(true);
   };
 
   const closeGeneratorModal = () => {
-    generatorModalState.value = false;
+    setIsGeneratorModalOpen(false);
   };
 
   const openAboutModal = () => {
-    aboutModalState.value = true;
+    setIsAboutModalOpen(true);
   };
 
   const closeAboutModal = () => {
-    aboutModalState.value = false;
+    setIsAboutModalOpen(false);
   };
 
   return (
@@ -68,7 +70,7 @@ export function BracketBuilder() {
             }
           />
           <div className="flex relative gap-6 flex-col xl:flex-row xl:w-full xl:h-full xl:pt-7 xl:pb-14 xl:overflow-x-auto">
-            {bracketStore.value.map((round, index) => (
+            {rounds.map((round, index) => (
               <RoundDetail key={`${index}_${round.name}`} index={index} round={round} />
             ))}
             <AddNewRoundButton onCreateRound={spotType => addNewRound(spotType)} />
@@ -76,19 +78,19 @@ export function BracketBuilder() {
         </div>
       </PageContent>
       <Modal
-        isOpen={generatorModalState.value}
+        isOpen={isGeneratorModalOpen}
         title="Structure file"
         content={
           <div className="space-y-4">
             <p className="text-sm text-gray-300">
               Copy it to your clipboard and paste it into the Competition Tool.
             </p>
-            <GeneratedText builderText={JSON.stringify(generatedJson.value, null, 2)} />
+            <GeneratedText builderText={`${JSON.stringify(generatedJSON, null, 2)}`} />
           </div>
         }
         onClose={closeGeneratorModal}
       />
-      <AboutModal isOpen={aboutModalState.value} onClose={closeAboutModal} />
+      <AboutModal isOpen={isAboutModalOpen} onClose={closeAboutModal} />
     </>
   );
 }

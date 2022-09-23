@@ -39,3 +39,22 @@ export interface StructureBuilderV1 {
   /** Array of all the rounds in a competition. */
   rounds: BuilderRoundDetail[];
 }
+
+export interface BracketStore {
+  rounds: BuilderRoundDetail[];
+  addNewRound: (spotType: AllSpotTypes) => void;
+  removeRound: (index: number) => void;
+  clearAllRounds: () => void;
+  changeRoundName: (index: number, name: string) => void;
+  clearMatchesInRound: (index: number) => void;
+  addMatchToRound: (index: number) => void;
+  removeMatchFromRound: (index: number, matchIndex: number) => void;
+  addPlayerToMatch: (index: number, matchIndex: number, generatorType?: string) => void;
+  removePlayerFromMatch: (index: number, matchIndex: number, spotIndex: number) => void;
+  updateMatchSpotDetails: (
+    index: number,
+    matchIndex: number,
+    spotIndex: number,
+    detail: AllParticipant
+  ) => void;
+}

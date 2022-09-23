@@ -1,24 +1,25 @@
 import { produce } from 'immer';
-import { AllParticipant } from '../types/builder-types';
-import { bracketStore } from './bracket-store';
+import { AllParticipant, BracketStore } from '../types/builder-types';
 
-export function addMatchOnRound(index: number) {
-  bracketStore.value = produce(bracketStore.value, draft => {
-    draft[index].matchGeneratorData.matches.push({ spots: [], settings: [] });
+export function addMatchToRound(index: number) {
+  return produce((state: BracketStore) => {
+    state.rounds[index].matchGeneratorData.matches.push({ spots: [], settings: [] });
   });
 }
 
 export function removeMatchFromRound(index: number, matchIndex: number) {
-  bracketStore.value = produce(bracketStore.value, draft => {
-    draft[index].matchGeneratorData.matches = draft[index].matchGeneratorData.matches.filter(
-      match => match !== draft[index].matchGeneratorData.matches[matchIndex]
+  return produce((state: BracketStore) => {
+    state.rounds[index].matchGeneratorData.matches = state.rounds[
+      index
+    ].matchGeneratorData.matches.filter(
+      match => match !== state.rounds[index].matchGeneratorData.matches[matchIndex]
     );
   });
 }
 
 export function addPlayerToMatch(index: number, matchIndex: number, generatorType?: string) {
-  bracketStore.value = produce(bracketStore.value, draft => {
-    const match = draft[index].matchGeneratorData.matches[matchIndex];
+  return produce((state: BracketStore) => {
+    const match = state.rounds[index].matchGeneratorData.matches[matchIndex];
 
     switch (generatorType) {
       case 'round_challenge_participant': {
@@ -65,23 +66,23 @@ export function addPlayerToMatch(index: number, matchIndex: number, generatorTyp
 }
 
 export function removePlayerFromMatch(index: number, matchIndex: number, spotIndex: number) {
-  bracketStore.value = produce(bracketStore.value, draft => {
-    const match = draft[index].matchGeneratorData.matches[matchIndex];
+  return produce((state: BracketStore) => {
+    const match = state.rounds[index].matchGeneratorData.matches[matchIndex];
 
     match.spots = match.spots.filter(
-      spot => spot !== draft[index].matchGeneratorData.matches[matchIndex].spots[spotIndex]
+      spot => spot !== state.rounds[index].matchGeneratorData.matches[matchIndex].spots[spotIndex]
     );
   });
 }
 
-export function updateMatchSpotDetais(
+export function updateMatchSpotDetails(
   index: number,
   matchIndex: number,
   spotIndex: number,
   detail: AllParticipant
 ) {
-  bracketStore.value = produce(bracketStore.value, draft => {
-    const match = draft[index].matchGeneratorData.matches[matchIndex];
+  return produce((state: BracketStore) => {
+    const match = state.rounds[index].matchGeneratorData.matches[matchIndex];
 
     match.spots[spotIndex] = detail;
   });

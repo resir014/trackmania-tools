@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useSignal } from '~/utils/signals';
 import ConfirmDialogPrompt from './confirm-dialog-prompt';
 
 interface ConfirmDialogOptions {
@@ -28,39 +27,41 @@ export const ConfirmDialogContext = React.createContext<ConfirmDialogContextObje
  * **Important:** Wrap your app inside this provider before using `useConfirmDialog()`.
  */
 export function ConfirmDialogProvider({ children }: React.PropsWithChildren<{}>) {
-  const dialogOpenState = useSignal(false);
-  const dialogOptionsState = useSignal<ConfirmDialogOptions | undefined>(undefined);
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const [dialogOptions, setDialogOptions] = React.useState<ConfirmDialogOptions | undefined>(
+    undefined
+  );
 
   const openDialog = (options: ConfirmDialogOptions) => {
-    dialogOptionsState.value = options;
-    dialogOpenState.value = true;
+    setDialogOptions(options);
+    setIsDialogOpen(true);
   };
 
   const resetDialog = () => {
-    dialogOpenState.value = false;
+    setIsDialogOpen(false);
     setTimeout(() => {
-      dialogOptionsState.value = undefined;
+      setDialogOptions(undefined);
     }, 300);
   };
 
   const handleCancel = () => {
     resetDialog();
-    dialogOptionsState.value?.actionCallback(false);
+    dialogOptions?.actionCallback(false);
   };
 
   const handleConfirm = () => {
     resetDialog();
-    dialogOptionsState.value?.actionCallback(true);
+    dialogOptions?.actionCallback(true);
   };
 
   return (
     <ConfirmDialogContext.Provider value={{ openDialog }}>
       <ConfirmDialogPrompt
-        isOpen={dialogOpenState.value}
-        title={dialogOptionsState.value?.title ?? ''}
-        description={dialogOptionsState.value?.message ?? ''}
-        confirmText={dialogOptionsState.value?.confirmText}
-        cancelText={dialogOptionsState.value?.cancelText}
+        isOpen={isDialogOpen}
+        title={dialogOptions?.title ?? ''}
+        description={dialogOptions?.message ?? ''}
+        confirmText={dialogOptions?.confirmText}
+        cancelText={dialogOptions?.cancelText}
         onConfirm={handleConfirm}
         onCancel={handleCancel}
       />

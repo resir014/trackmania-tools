@@ -1,7 +1,7 @@
 import { ClipboardDocumentIcon, TrashIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
 import { SecondaryButton } from '~/components/ui/button';
-import { addPlayerToMatch, removeMatchFromRound } from '../builder/matches-builder';
+import { useBracketStore } from '../builder/bracket-store';
 import { MatchSettingsData } from '../types/builder-types';
 import { SpotDetail } from './spot-detail';
 
@@ -13,6 +13,9 @@ export interface MatchDetailProps {
 }
 
 export function MatchDetail({ index, roundIndex, match, generatorType }: MatchDetailProps) {
+  const addPlayerToMatch = useBracketStore(state => state.addPlayerToMatch);
+  const removeMatchFromRound = useBracketStore(state => state.removeMatchFromRound);
+
   return (
     <div className="overflow-hidden">
       <div className="flex items-center justify-between p-4">

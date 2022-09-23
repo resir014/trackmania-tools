@@ -2,7 +2,6 @@ import { CheckIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
 import clsx from 'clsx';
 import { GhostedButton } from '~/components/ui/button';
-import { useSignal } from '~/utils/signals';
 
 export interface RoundNameEditorProps {
   initialValue?: string;
@@ -12,18 +11,18 @@ export interface RoundNameEditorProps {
 export function RoundNameEditor({ initialValue, onChange }: RoundNameEditorProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isEditing, setIsEditing] = React.useState(false);
-  const inputState = useSignal(initialValue);
+  const [inputState, setInputState] = React.useState(initialValue);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    inputState.value = e.target.value;
+    setInputState(e.target.value);
   };
 
   const handleEditName = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setIsEditing(false);
-    if (onChange && inputState.value) {
-      onChange(inputState.value);
+    if (onChange && inputState) {
+      onChange(inputState);
     }
   };
 
@@ -47,7 +46,7 @@ export function RoundNameEditor({ initialValue, onChange }: RoundNameEditorProps
             'focus:border-green-500 focus:outline-none focus:ring-green-500'
           )}
           onChange={handleChange}
-          value={inputState.value}
+          value={inputState}
         />
         {isEditing ? (
           <div className="absolute right-0 top-0 h-full pr-1 flex items-center">

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { InputAddonGroup } from '~/components/ui/forms/input-addon-group';
 import { InputAddonText } from '~/components/ui/forms/input-addon-text';
 import { InputText } from '~/components/ui/forms/input-text';
-import { useSignal } from '~/utils/signals';
 import { LeaderboardParticipant } from '../../types/participant-types';
 
 export interface LeaderboardSpotProps {
@@ -11,18 +10,18 @@ export interface LeaderboardSpotProps {
 }
 
 export function LeaderboardSpot({ spot, onChange }: LeaderboardSpotProps) {
-  const rankState = useSignal(spot);
-  const formState = useSignal(spot.rank.toString());
+  const [updateSpot, setUpdateSpot] = React.useState(spot);
+  const [formState, setFormState] = React.useState(spot.rank.toString());
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    formState.value = e.target.value;
-    const rankAsNumber = parseInt(formState.value, 10);
+    setFormState(e.target.value);
+    const rankAsNumber = parseInt(formState, 10);
 
     // Check if input value is valid number before updating rank state
     if (onChange && isFinite(rankAsNumber)) {
-      rankState.value = { ...rankState.value, rank: rankAsNumber };
-      onChange(rankState.value);
+      setUpdateSpot(prevState => ({ ...prevState, rank: rankAsNumber }));
+      onChange(updateSpot);
     }
   };
 
@@ -42,7 +41,7 @@ export function LeaderboardSpot({ spot, onChange }: LeaderboardSpotProps) {
             autoComplete="off"
             className="pl-7"
             onChange={handleChange}
-            value={formState.value}
+            value={formState}
           />
         </InputAddonGroup>
       </div>

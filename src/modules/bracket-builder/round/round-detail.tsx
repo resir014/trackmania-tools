@@ -1,15 +1,24 @@
 import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
 import SimpleBar from 'simplebar-react';
+import create from 'zustand';
 import { SecondaryButton } from '~/components/ui/button';
 import { useConfirmDialog } from '~/components/ui/confirm-dialog';
-import { useSignal } from '~/utils/signals';
-import { addMatchOnRound } from '../builder/matches-builder';
-import { changeRoundName, clearMatchesInRound, removeRound } from '../builder/rounds-builder';
-import { BuilderRoundDetail } from '../types/builder-types';
+import { useBracketStore } from '../builder/bracket-store';
+import { AllSpotTypes, BuilderRoundDetail } from '../types/builder-types';
 import { MatchDetail } from '../match/match-detail';
 import { RoundNameEditor } from './round-name-editor';
 import { RoundPlacementSelector } from './round-placement-selector';
+
+export interface PlacementStore {
+  spotType: AllSpotTypes;
+  setSpotType: (type: AllSpotTypes) => void;
+}
+
+const usePlacementStore = create<PlacementStore>(set => ({
+  spotType: 'round_challenge_participant',
+  setSpotType: (type: AllSpotTypes) => set({ spotType: type }),
+}));
 
 export interface RoundDetailProps {
   index: number;
@@ -17,11 +26,20 @@ export interface RoundDetailProps {
 }
 
 export function RoundDetail({ index, round }: RoundDetailProps) {
+  const { defaultSpotType, clearMatchesInRound, changeRoundName, removeRound, addMatchToRound } =
+    useBracketStore(state => ({
+      defaultSpotType: state.rounds[index].defaultSpotType,
+      clearMatchesInRound: state.clearMatchesInRound,
+      changeRoundName: state.changeRoundName,
+      removeRound: state.removeRound,
+      addMatchToRound: state.addMatchToRound,
+    }));
+  const setSpotType = usePlacementStore(state => state.setSpotType);
+
   const { confirm } = useConfirmDialog();
-  const placementStore = useSignal<string>(round.defaultSpotType ?? 'round_challenge_participant');
 
   const handlePlacementChange = (value: string) => {
-    placementStore.value = value;
+    setSpotType(value as AllSpotTypes);
     clearMatchesInRound(index);
   };
 
@@ -50,10 +68,10 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
         <div className="mt-4 flex xl:mt-0 xl:ml-4">
           <div className="flex items-center space-x-2">
             <RoundPlacementSelector
-              defaultValue={placementStore.value}
+              defaultValue={defaultSpotType}
               onChange={handlePlacementChange}
             />
-            <SecondaryButton icon={PlusIcon} iconOnly onClick={() => addMatchOnRound(index)}>
+            <SecondaryButton icon={PlusIcon} iconOnly onClick={() => addMatchToRound(index)}>
               Add match
             </SecondaryButton>
             <SecondaryButton color="red" icon={TrashIcon} iconOnly onClick={handleRemoveRound}>
@@ -71,7 +89,7 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
                 index={matchIndex}
                 roundIndex={index}
                 match={match}
-                generatorType={placementStore.value}
+                generatorType={defaultSpotType}
               />
             ))}
           </div>

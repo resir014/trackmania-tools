@@ -2,7 +2,6 @@ import * as React from 'react';
 import { InputAddonGroup } from '~/components/ui/forms/input-addon-group';
 import { InputAddonText } from '~/components/ui/forms/input-addon-text';
 import { InputText } from '~/components/ui/forms/input-text';
-import { useSignal } from '~/utils/signals';
 import { PreviousRoundParticipant } from '../../types/participant-types';
 
 export interface PreviousRoundSpotProps {
@@ -11,44 +10,44 @@ export interface PreviousRoundSpotProps {
 }
 
 export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
-  const rankState = useSignal(spot);
-  const roundPosInputState = useSignal(spot.roundPosition.toString());
-  const matchPosInputState = useSignal(spot.matchPosition.toString());
-  const rankInputState = useSignal(spot.rank.toString());
+  const [updateSpot, setUpdateSpot] = React.useState(spot);
+  const [roundPosInputState, setRoundPosInputState] = React.useState(spot.roundPosition.toString());
+  const [matchPosInputState, setMatchPosInputState] = React.useState(spot.matchPosition.toString());
+  const [rankInputState, setRankInputState] = React.useState(spot.rank.toString());
 
   const handleRoundPosChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    roundPosInputState.value = e.target.value;
-    const posAsNumber = parseInt(roundPosInputState.value, 10);
+    setRoundPosInputState(e.target.value);
+    const posAsNumber = parseInt(roundPosInputState, 10);
 
     // Check if input value is valid number before updating state
     if (onChange && isFinite(posAsNumber)) {
-      rankState.value = { ...rankState.value, roundPosition: posAsNumber };
-      onChange(rankState.value);
+      setUpdateSpot(prevState => ({ ...prevState, roundPosition: posAsNumber }));
+      onChange(updateSpot);
     }
   };
 
   const handleMatchPosChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    matchPosInputState.value = e.target.value;
-    const posAsNumber = parseInt(matchPosInputState.value, 10);
+    setMatchPosInputState(e.target.value);
+    const posAsNumber = parseInt(matchPosInputState, 10);
 
     // Check if input value is valid number before updating state
     if (onChange && isFinite(posAsNumber)) {
-      rankState.value = { ...rankState.value, matchPosition: posAsNumber };
-      onChange(rankState.value);
+      setUpdateSpot(prevState => ({ ...prevState, matchPosition: posAsNumber }));
+      onChange(updateSpot);
     }
   };
 
   const handleRankChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    rankInputState.value = e.target.value;
-    const rankAsNumber = parseInt(rankInputState.value, 10);
+    setRankInputState(e.target.value);
+    const rankAsNumber = parseInt(rankInputState, 10);
 
     // Check if input value is valid number before updating state
     if (onChange && isFinite(rankAsNumber)) {
-      rankState.value = { ...rankState.value, rank: rankAsNumber };
-      onChange(rankState.value);
+      setUpdateSpot(prevState => ({ ...prevState, rank: rankAsNumber }));
+      onChange(updateSpot);
     }
   };
 
@@ -67,7 +66,7 @@ export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
             id="rank"
             autoComplete="off"
             className="pl-7"
-            value={roundPosInputState.value}
+            value={roundPosInputState}
             onChange={handleRoundPosChange}
           />
         </InputAddonGroup>
@@ -85,7 +84,7 @@ export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
             id="rank"
             autoComplete="off"
             className="pl-7"
-            value={matchPosInputState.value}
+            value={matchPosInputState}
             onChange={handleMatchPosChange}
           />
         </InputAddonGroup>
@@ -103,7 +102,7 @@ export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
             id="rank"
             autoComplete="off"
             className="pl-7"
-            value={rankInputState.value}
+            value={rankInputState}
             onChange={handleRankChange}
           />
         </InputAddonGroup>
