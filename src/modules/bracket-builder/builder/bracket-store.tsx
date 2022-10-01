@@ -1,10 +1,5 @@
 import create from 'zustand';
-import {
-  AllParticipant,
-  AllSpotTypes,
-  BracketStore,
-  StructureBuilderV1,
-} from '../types/builder-types';
+import { BracketStore, StructureBuilderV1 } from '../types/builder-types';
 import { SpotTypeSelections } from '../types/store-types';
 import {
   addMatchToRound,
@@ -30,22 +25,22 @@ export const spotTypeSelections: SpotTypeSelections[] = [
 
 export const useBracketStore = create<BracketStore>(set => ({
   rounds: [],
-  addNewRound(spotType?: AllSpotTypes) {
+  addNewRound(spotType) {
     set(addNewRound(spotType));
   },
-  removeRound(index: number) {
+  removeRound(index) {
     set(removeRound(index));
   },
   clearAllRounds() {
     set(clearAllRounds());
   },
-  changeRoundName(index: number, name: string) {
+  changeRoundName(index, name) {
     set(changeRoundName(index, name));
   },
-  clearMatchesInRound(index: number) {
+  clearMatchesInRound(index) {
     set(clearMatchesInRound(index));
   },
-  addMatchToRound(index: number) {
+  addMatchToRound(index) {
     set(addMatchToRound(index));
   },
   removeMatchFromRound(index, matchIndex) {
@@ -54,15 +49,10 @@ export const useBracketStore = create<BracketStore>(set => ({
   addPlayerToMatch(index, matchIndex, generatorType) {
     set(addPlayerToMatch(index, matchIndex, generatorType));
   },
-  removePlayerFromMatch(index: number, matchIndex: number, spotIndex: number) {
+  removePlayerFromMatch(index, matchIndex, spotIndex) {
     set(removePlayerFromMatch(index, matchIndex, spotIndex));
   },
-  updateMatchSpotDetails(
-    index: number,
-    matchIndex: number,
-    spotIndex: number,
-    detail: AllParticipant
-  ) {
+  updateMatchSpotDetails(index, matchIndex, spotIndex, detail) {
     set(updateMatchSpotDetails(index, matchIndex, spotIndex, detail));
   },
 }));
