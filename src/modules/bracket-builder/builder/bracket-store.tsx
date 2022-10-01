@@ -1,24 +1,19 @@
 import create from 'zustand';
-import {
-  AllParticipant,
-  AllSpotTypes,
-  BracketStore,
-  StructureBuilderV1,
-} from '../types/builder-types';
+import { BracketStore, StructureBuilderV1 } from '../types/builder-types';
 import { SpotTypeSelections } from '../types/store-types';
 import {
-  addMatchToRound,
-  addPlayerToMatch,
-  removeMatchFromRound,
-  removePlayerFromMatch,
-  updateMatchSpotDetails,
-} from './matches-builder';
+  addMatchToRoundAction,
+  addPlayerToMatchAction,
+  removeMatchFromRoundAction,
+  removePlayerFromMatchAction,
+  updateMatchSpotDetailsAction,
+} from './matches-actions';
 import {
-  addNewRound,
-  changeRoundName,
-  clearAllRounds,
-  clearMatchesInRound,
-  removeRound,
+  addNewRoundAction,
+  changeRoundNameAction,
+  clearAllRoundsAction,
+  clearMatchesInRoundAction,
+  removeRoundAction,
 } from './round-actions';
 
 export const spotTypeSelections: SpotTypeSelections[] = [
@@ -30,40 +25,35 @@ export const spotTypeSelections: SpotTypeSelections[] = [
 
 export const useBracketStore = create<BracketStore>(set => ({
   rounds: [],
-  addNewRound(spotType?: AllSpotTypes) {
-    set(addNewRound(spotType));
+  addNewRound(spotType) {
+    set(addNewRoundAction(spotType));
   },
-  removeRound(index: number) {
-    set(removeRound(index));
+  removeRound(index) {
+    set(removeRoundAction(index));
   },
   clearAllRounds() {
-    set(clearAllRounds());
+    set(clearAllRoundsAction());
   },
-  changeRoundName(index: number, name: string) {
-    set(changeRoundName(index, name));
+  changeRoundName(index, name) {
+    set(changeRoundNameAction(index, name));
   },
-  clearMatchesInRound(index: number) {
-    set(clearMatchesInRound(index));
+  clearMatchesInRound(index) {
+    set(clearMatchesInRoundAction(index));
   },
-  addMatchToRound(index: number) {
-    set(addMatchToRound(index));
+  addMatchToRound(index) {
+    set(addMatchToRoundAction(index));
   },
   removeMatchFromRound(index, matchIndex) {
-    set(removeMatchFromRound(index, matchIndex));
+    set(removeMatchFromRoundAction(index, matchIndex));
   },
   addPlayerToMatch(index, matchIndex, generatorType) {
-    set(addPlayerToMatch(index, matchIndex, generatorType));
+    set(addPlayerToMatchAction(index, matchIndex, generatorType));
   },
-  removePlayerFromMatch(index: number, matchIndex: number, spotIndex: number) {
-    set(removePlayerFromMatch(index, matchIndex, spotIndex));
+  removePlayerFromMatch(index, matchIndex, spotIndex) {
+    set(removePlayerFromMatchAction(index, matchIndex, spotIndex));
   },
-  updateMatchSpotDetails(
-    index: number,
-    matchIndex: number,
-    spotIndex: number,
-    detail: AllParticipant
-  ) {
-    set(updateMatchSpotDetails(index, matchIndex, spotIndex, detail));
+  updateMatchSpotDetails(index, matchIndex, spotIndex, detail) {
+    set(updateMatchSpotDetailsAction(index, matchIndex, spotIndex, detail));
   },
 }));
 

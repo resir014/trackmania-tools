@@ -1,13 +1,13 @@
 import { produce } from 'immer';
 import { AllParticipant, BracketStore } from '../types/builder-types';
 
-export function addMatchToRound(index: number) {
+export function addMatchToRoundAction(index: number) {
   return produce((state: BracketStore) => {
     state.rounds[index].matchGeneratorData.matches.push({ spots: [], settings: [] });
   });
 }
 
-export function removeMatchFromRound(index: number, matchIndex: number) {
+export function removeMatchFromRoundAction(index: number, matchIndex: number) {
   return produce((state: BracketStore) => {
     state.rounds[index].matchGeneratorData.matches = state.rounds[
       index
@@ -17,7 +17,7 @@ export function removeMatchFromRound(index: number, matchIndex: number) {
   });
 }
 
-export function addPlayerToMatch(index: number, matchIndex: number, generatorType?: string) {
+export function addPlayerToMatchAction(index: number, matchIndex: number, generatorType?: string) {
   return produce((state: BracketStore) => {
     const match = state.rounds[index].matchGeneratorData.matches[matchIndex];
 
@@ -65,7 +65,7 @@ export function addPlayerToMatch(index: number, matchIndex: number, generatorTyp
   });
 }
 
-export function removePlayerFromMatch(index: number, matchIndex: number, spotIndex: number) {
+export function removePlayerFromMatchAction(index: number, matchIndex: number, spotIndex: number) {
   return produce((state: BracketStore) => {
     const match = state.rounds[index].matchGeneratorData.matches[matchIndex];
 
@@ -75,7 +75,7 @@ export function removePlayerFromMatch(index: number, matchIndex: number, spotInd
   });
 }
 
-export function updateMatchSpotDetails(
+export function updateMatchSpotDetailsAction(
   index: number,
   matchIndex: number,
   spotIndex: number,
