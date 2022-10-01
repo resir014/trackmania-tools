@@ -42,7 +42,7 @@ export interface StructureBuilderV1 {
 
 export interface BracketStore {
   rounds: BuilderRoundDetail[];
-  importBracketData?: (structure: StructureBuilderV1) => void;
+  importBracketData: (structure: StructureBuilderV1) => void;
   addNewRound: (spotType: AllSpotTypes) => void;
   removeRound: (index: number) => void;
   clearAllRounds: () => void;
