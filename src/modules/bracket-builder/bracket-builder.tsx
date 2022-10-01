@@ -1,23 +1,31 @@
-import { ArrowDownTrayIcon, QuestionMarkCircleIcon, TrashIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowDownTrayIcon,
+  ArrowUpTrayIcon,
+  InformationCircleIcon,
+  TrashIcon,
+} from '@heroicons/react/24/outline';
 import * as React from 'react';
 import { PageContent } from '~/components/page-content';
 import { PageHeader } from '~/components/page-header';
-import { PrimaryButton } from '~/components/ui/button';
+import { GhostedButton, PrimaryButton } from '~/components/ui/button';
 import { useConfirmDialog } from '~/components/ui/confirm-dialog';
 import Modal from '~/components/ui/modal';
 import { useBracketStore, useGeneratedJSON } from './builder/bracket-store';
 import AboutModal from './components/about-modal';
 import { AddNewRoundButton } from './components/add-new-round-button';
 import { GeneratedText } from './components/generated-copier';
+import { ImporterEditor } from './components/importer-editor';
 import { RoundDetail } from './round/round-detail';
 
 export function BracketBuilder() {
   const { confirm } = useConfirmDialog();
   const rounds = useBracketStore(state => state.rounds);
   const addNewRound = useBracketStore(state => state.addNewRound);
+  const importBracketData = useBracketStore(state => state.importBracketData);
   const clearAllRounds = useBracketStore(state => state.clearAllRounds);
   const generatedJSON = useGeneratedJSON();
-  const [isGeneratorModalOpen, setIsGeneratorModalOpen] = React.useState(false);
+  const [isExportModalOpen, setIsExportModalOpen] = React.useState(false);
+  const [isImportModalOpen, setIsImportModalOpen] = React.useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = React.useState(false);
 
   const handleConfirmClear = async () => {
@@ -33,12 +41,20 @@ export function BracketBuilder() {
     }
   };
 
-  const openGeneratorModal = () => {
-    setIsGeneratorModalOpen(true);
+  const openExportModal = () => {
+    setIsExportModalOpen(true);
   };
 
-  const closeGeneratorModal = () => {
-    setIsGeneratorModalOpen(false);
+  const closeExportModal = () => {
+    setIsExportModalOpen(false);
+  };
+
+  const openImportModal = () => {
+    setIsImportModalOpen(true);
+  };
+
+  const closeImportModal = () => {
+    setIsImportModalOpen(false);
   };
 
   const openAboutModal = () => {
@@ -55,16 +71,36 @@ export function BracketBuilder() {
         <div className="container mx-auto space-y-8">
           <PageHeader
             pageTitle="Bracket Builder"
+            tooltip={
+              <GhostedButton icon={InformationCircleIcon} iconOnly onClick={openAboutModal}>
+                About
+              </GhostedButton>
+            }
             actions={
-              <div className="flex items-center space-x-4">
-                <PrimaryButton icon={ArrowDownTrayIcon} color="blue" onClick={openGeneratorModal}>
-                  Generate
+              <div className="flex flex-wrap items-center -m-2">
+                <PrimaryButton
+                  className="m-2"
+                  icon={ArrowDownTrayIcon}
+                  color="blue"
+                  onClick={openExportModal}
+                >
+                  Export
                 </PrimaryButton>
-                <PrimaryButton icon={TrashIcon} color="red" onClick={handleConfirmClear}>
+                <PrimaryButton
+                  className="m-2"
+                  icon={ArrowUpTrayIcon}
+                  color="blue"
+                  onClick={openImportModal}
+                >
+                  Import
+                </PrimaryButton>
+                <PrimaryButton
+                  className="m-2"
+                  icon={TrashIcon}
+                  color="red"
+                  onClick={handleConfirmClear}
+                >
                   Clear
-                </PrimaryButton>
-                <PrimaryButton icon={QuestionMarkCircleIcon} color="gray" onClick={openAboutModal}>
-                  About
                 </PrimaryButton>
               </div>
             }
@@ -78,8 +114,8 @@ export function BracketBuilder() {
         </div>
       </PageContent>
       <Modal
-        isOpen={isGeneratorModalOpen}
-        title="Structure file"
+        isOpen={isExportModalOpen}
+        title="Export structure file"
         content={
           <div className="space-y-4">
             <p className="text-sm text-gray-300">
@@ -88,7 +124,25 @@ export function BracketBuilder() {
             <GeneratedText builderText={`${JSON.stringify(generatedJSON, null, 2)}`} />
           </div>
         }
-        onClose={closeGeneratorModal}
+        onClose={closeExportModal}
+      />
+      <Modal
+        isOpen={isImportModalOpen}
+        title="Import structure file"
+        content={
+          <div className="space-y-4">
+            <p className="text-sm text-gray-300">
+              Copy and paste your existing structure file here.
+            </p>
+            <ImporterEditor
+              onImport={structure => {
+                importBracketData(structure);
+                closeImportModal();
+              }}
+            />
+          </div>
+        }
+        onClose={closeImportModal}
       />
       <AboutModal isOpen={isAboutModalOpen} onClose={closeAboutModal} />
     </>

@@ -1,5 +1,17 @@
 import { produce } from 'immer';
-import { AllSpotTypes, BracketStore, BuilderRoundDetail } from '../types/builder-types';
+import {
+  AllSpotTypes,
+  BracketStore,
+  BuilderRoundDetail,
+  StructureBuilderV1,
+} from '../types/builder-types';
+
+export function importBracketDataAction(structure: StructureBuilderV1) {
+  return produce((state: BracketStore) => {
+    const { rounds } = structure;
+    state.rounds = rounds;
+  });
+}
 
 export function addNewRoundAction(spotType?: AllSpotTypes) {
   return produce((state: BracketStore) => {
