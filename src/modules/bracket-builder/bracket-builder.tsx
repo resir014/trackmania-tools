@@ -5,6 +5,7 @@ import {
   TrashIcon,
 } from '@heroicons/react/24/outline';
 import * as React from 'react';
+import SimpleBar from 'simplebar-react';
 import { PageContent } from '~/components/page-content';
 import { PageHeader } from '~/components/page-header';
 import { GhostedButton, PrimaryButton } from '~/components/ui/button';
@@ -105,12 +106,14 @@ export function BracketBuilder() {
               </div>
             }
           />
-          <div className="flex relative gap-6 flex-col xl:flex-row xl:w-full xl:h-full xl:pt-7 xl:pb-14 xl:overflow-x-auto">
-            {rounds.map((round, index) => (
-              <RoundDetail key={`${index}_${round.name}`} index={index} round={round} />
-            ))}
-            <AddNewRoundButton onCreateRound={spotType => addNewRound(spotType)} />
-          </div>
+          <SimpleBar className="xl:h-[739px]" forceVisible="x" autoHide={false}>
+            <div className="flex relative gap-6 flex-col xl:flex-row xl:w-full xl:h-full xl:pt-7 xl:pb-14">
+              {rounds.map((round, index) => (
+                <RoundDetail key={`${index}_${round.name}`} index={index} round={round} />
+              ))}
+              <AddNewRoundButton onCreateRound={spotType => addNewRound(spotType)} />
+            </div>
+          </SimpleBar>
         </div>
       </PageContent>
       <Modal
