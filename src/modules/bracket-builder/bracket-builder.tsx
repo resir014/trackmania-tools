@@ -106,7 +106,7 @@ export function BracketBuilder() {
               </div>
             }
           />
-          <SimpleBar className="h-[739px]" forceVisible="x" autoHide={false}>
+          <SimpleBar className="xl:h-[739px]" forceVisible="x" autoHide={false}>
             <div className="flex relative gap-6 flex-col xl:flex-row xl:w-full xl:h-full xl:pt-7 xl:pb-14">
               {rounds.map((round, index) => (
                 <RoundDetail key={`${index}_${round.name}`} index={index} round={round} />
