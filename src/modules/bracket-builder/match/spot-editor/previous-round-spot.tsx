@@ -115,7 +115,7 @@ export function PreviousRoundSpot({ spot, onChange }: PreviousRoundSpotProps) {
           ))}
         </InputSelect>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 w-[78px]">
         <label htmlFor="rank" className="sr-only">
           Rank
         </label>

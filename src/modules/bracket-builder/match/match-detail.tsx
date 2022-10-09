@@ -1,5 +1,6 @@
 import { ClipboardDocumentIcon, TrashIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
+import SimpleBar from 'simplebar-react';
 import { SecondaryButton } from '~/components/ui/button';
 import { useBracketStore } from '../builder/bracket-store';
 import { MatchSettingsData } from '../types/builder-types';
@@ -43,17 +44,19 @@ export function MatchDetail({ index, roundIndex, match, generatorType }: MatchDe
           </SecondaryButton>
         </div>
       </div>
-      <div className="px-4 pt-2 pb-4 space-y-2">
-        {match.spots.map((item, spotIndex) => (
-          <SpotDetail
-            key={spotIndex}
-            index={spotIndex}
-            matchIndex={index}
-            roundIndex={roundIndex}
-            spot={item}
-          />
-        ))}
-      </div>
+      <SimpleBar>
+        <div className="px-4 pt-2 pb-4 space-y-2">
+          {match.spots.map((item, spotIndex) => (
+            <SpotDetail
+              key={spotIndex}
+              index={spotIndex}
+              matchIndex={index}
+              roundIndex={roundIndex}
+              spot={item}
+            />
+          ))}
+        </div>
+      </SimpleBar>
     </div>
   );
 }
