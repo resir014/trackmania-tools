@@ -9,7 +9,10 @@ import {
 export function importBracketDataAction(structure: StructureBuilderV1) {
   return produce((state: BracketStore) => {
     const { rounds } = structure;
-    state.rounds = rounds;
+    state.rounds = rounds.map((round, index) => ({
+      ...round,
+      name: round.name ?? `Round ${index + 1}`,
+    }));
   });
 }
 

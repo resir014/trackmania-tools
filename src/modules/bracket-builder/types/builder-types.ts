@@ -24,7 +24,7 @@ export interface MatchGeneratorData {
 
 export interface BuilderRoundDetail {
   /** Round name. */
-  name: string;
+  name?: string;
   /** Match generator type. (always `'spot_filler'`) */
   matchGeneratorType: 'spot_filler';
   /** Match generator data. */

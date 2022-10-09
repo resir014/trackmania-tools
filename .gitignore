@@ -11,6 +11,9 @@ out/
 # swc cache
 .swc/
 
+# TypeScript build info
+*.tsbuildinfo
+
 # Logs
 logs
 *.log
