@@ -27,7 +27,7 @@ export default function ConfirmDialogPrompt({
       isOpen={isOpen}
       state="danger"
       title={title}
-      content={<p className="text-sm text-gray-300">{description}</p>}
+      message={description}
       actions={
         <PrimaryButton type="button" block color="red" onClick={onConfirm}>
           {confirmText}

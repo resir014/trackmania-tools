@@ -10,12 +10,11 @@ import { PageContent } from '~/components/page-content';
 import { PageHeader } from '~/components/page-header';
 import { GhostedButton, PrimaryButton } from '~/components/ui/button';
 import { useConfirmDialog } from '~/components/ui/confirm-dialog';
-import { Modal } from '~/components/ui/modal';
 import { useBracketStore, useGeneratedJSON } from './builder/bracket-store';
 import AboutModal from './components/about-modal';
 import { AddNewRoundButton } from './components/add-new-round-button';
-import { GeneratedText } from './components/generated-copier';
-import { ImporterEditor } from './components/importer-editor';
+import { ExporterDrawer } from './components/exporter-drawer';
+import { ImporterDrawer } from './components/importer-drawer';
 import { RoundDetail } from './round/round-detail';
 
 export function BracketBuilder() {
@@ -116,36 +115,15 @@ export function BracketBuilder() {
           </SimpleBar>
         </div>
       </PageContent>
-      <Modal
+      <ExporterDrawer
         isOpen={isExportModalOpen}
-        title="Export structure file"
-        content={
-          <div className="space-y-4">
-            <p className="text-sm text-gray-300">
-              Copy it to your clipboard and paste it into the Competition Tool.
-            </p>
-            <GeneratedText builderText={`${JSON.stringify(generatedJSON, null, 2)}`} />
-          </div>
-        }
+        generatedJSON={generatedJSON}
         onClose={closeExportModal}
       />
-      <Modal
+      <ImporterDrawer
         isOpen={isImportModalOpen}
-        title="Import structure file"
-        content={
-          <div className="space-y-4">
-            <p className="text-sm text-gray-300">
-              Copy and paste your existing structure file here.
-            </p>
-            <ImporterEditor
-              onImport={structure => {
-                importBracketData(structure);
-                closeImportModal();
-              }}
-            />
-          </div>
-        }
         onClose={closeImportModal}
+        onImport={structure => importBracketData(structure)}
       />
       <AboutModal isOpen={isAboutModalOpen} onClose={closeAboutModal} />
     </>
