@@ -39,7 +39,7 @@ export const OutlineAnchorButton = React.forwardRef<HTMLAnchorElement, AnchorBut
         buttonBlockStyles(block, iconPosition),
         buttonSizes(size),
         buttonRoundedStyles(rounded, size),
-        'items-center justify-center border border-transparent font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2',
+        'items-center justify-center border font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2',
         outlineButtonColors(color),
         disabledStyles,
         className

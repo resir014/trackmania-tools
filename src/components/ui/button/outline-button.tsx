@@ -43,7 +43,7 @@ export const OutlineButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         buttonBlockStyles(block, iconPosition),
         buttonSizes(size),
         buttonRoundedStyles(rounded, size),
-        'items-center justify-center border border-transparent font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ring-offset-gray-900',
+        'items-center justify-center border font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ring-offset-gray-900',
         outlineButtonColors(color),
         disabledStyles,
         className
