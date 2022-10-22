@@ -84,7 +84,7 @@ export function Modal({
                   {modalState?.icon ? (
                     <div
                       className={clsx(
-                        'mb-3 mx-auto flex h-12 w-12 items-center justify-center rounded-full',
+                        'mb-3 sm:mb-5 mx-auto flex h-12 w-12 items-center justify-center rounded-full',
                         modalState.backgroundColor,
                         'bg-opacity-50'
                       )}
@@ -95,7 +95,7 @@ export function Modal({
                       })}
                     </div>
                   ) : null}
-                  <div className="text-center sm:mt-5">
+                  <div className="text-center">
                     <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-white">
                       {title}
                     </Dialog.Title>
