@@ -23,7 +23,7 @@ export function GeneratedText({ builderText }: GeneratedTextProps) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative flex flex-col flex-1">
       <GhostedButton
         type="button"
         className="absolute top-2 right-4"
@@ -34,7 +34,7 @@ export function GeneratedText({ builderText }: GeneratedTextProps) {
       >
         {copyComplete ? 'Copied!' : 'Copy to clipboard'}
       </GhostedButton>
-      <pre className="p-4 bg-gray-800 rounded-tl-lg rounded-br-lg text-sm text-left h-full min-h-[64px] max-h-[240px] overflow-hidden select-none pointer-events-none">
+      <pre className="flex-1 p-4 bg-gray-800 rounded-tl-lg rounded-br-lg text-sm text-left h-full min-h-[64px] overflow-hidden select-none pointer-events-none">
         {builderText}
       </pre>
     </div>

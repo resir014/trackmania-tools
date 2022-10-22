@@ -17,4 +17,12 @@
     left: 0;
     right: 0;
   }
+
+  .helper-cm-fullheight .cm-editor {
+    height: 100%;
+  }
+
+  .helper-cm-fullheight .cm-scroller {
+    overflow: auto;
+  }
 }
