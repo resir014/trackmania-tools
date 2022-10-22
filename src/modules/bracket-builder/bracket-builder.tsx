@@ -10,7 +10,7 @@ import { PageContent } from '~/components/page-content';
 import { PageHeader } from '~/components/page-header';
 import { GhostedButton, PrimaryButton } from '~/components/ui/button';
 import { useConfirmDialog } from '~/components/ui/confirm-dialog';
-import Modal from '~/components/ui/modal';
+import { Modal } from '~/components/ui/modal';
 import { useBracketStore, useGeneratedJSON } from './builder/bracket-store';
 import AboutModal from './components/about-modal';
 import { AddNewRoundButton } from './components/add-new-round-button';
