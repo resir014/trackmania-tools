@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { OutlineButton } from '~/components/ui/button';
+import { modalOverlayStyles } from '~/components/ui/modal';
 import { BracketBuilderLogo } from './bracket-builder-logo';
-
 export interface AboutModalProps {
   isOpen?: boolean;
   onClose?: () => void;
@@ -35,7 +35,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-75 transition-opacity" />
+          <div className={modalOverlayStyles} />
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
