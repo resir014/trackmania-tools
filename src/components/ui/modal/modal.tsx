@@ -1,20 +1,33 @@
-/* This example requires Tailwind CSS v2.0+ */
+import clsx from 'clsx';
 import * as React from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { CheckIcon } from '@heroicons/react/24/outline';
-import { OutlineButton } from './button';
+import { OutlineButton } from '../button';
+import { ModalState, modalStates } from './modal-icons';
 
 export interface ModalProps {
   isOpen?: boolean;
   title: string;
   message?: string;
+  state?: ModalState;
   content?: React.ReactNode;
+  closeButtonText?: string;
   onClose?: () => void;
   actions?: React.ReactNode;
 }
 
-export default function Modal({ isOpen, title, message, content, onClose, actions }: ModalProps) {
+export function Modal({
+  isOpen,
+  title,
+  message,
+  state = 'info',
+  content,
+  closeButtonText,
+  onClose,
+  actions,
+}: ModalProps) {
   const closeButtonRef = React.useRef(null);
+
+  const modalState = modalStates(state);
 
   const handleCloseDialog = () => {
     if (onClose) {
@@ -67,10 +80,21 @@ export default function Modal({ isOpen, title, message, content, onClose, action
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-tl-lg rounded-br-lg bg-gray-900 px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div>
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-900">
-                    <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
-                  </div>
-                  <div className="mt-3 text-center sm:mt-5">
+                  {modalState?.icon ? (
+                    <div
+                      className={clsx(
+                        'mb-3 mx-auto flex h-12 w-12 items-center justify-center rounded-full',
+                        modalState.backgroundColor,
+                        'bg-opacity-50'
+                      )}
+                    >
+                      {React.createElement(modalState.icon, {
+                        className: clsx('h-6 w-6', modalState.color),
+                        'aria-hidden': true,
+                      })}
+                    </div>
+                  ) : null}
+                  <div className="text-center sm:mt-5">
                     <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-white">
                       {title}
                     </Dialog.Title>
@@ -86,7 +110,7 @@ export default function Modal({ isOpen, title, message, content, onClose, action
                       onClick={handleCloseDialog}
                       ref={closeButtonRef}
                     >
-                      Close
+                      {closeButtonText ?? 'Close'}
                     </OutlineButton>
                     {actions ? actions : null}
                   </div>
