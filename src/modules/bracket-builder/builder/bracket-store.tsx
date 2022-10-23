@@ -15,6 +15,7 @@ import {
   clearMatchesInRoundAction,
   importBracketDataAction,
   removeRoundAction,
+  setRoundDefaultSpotTypeAction,
 } from './round-actions';
 
 export const spotTypeSelections: SpotTypeSelections[] = [
@@ -43,6 +44,9 @@ export const useBracketStore = create<BracketStore>(set => ({
   },
   clearMatchesInRound(index) {
     set(clearMatchesInRoundAction(index));
+  },
+  setRoundDefaultSpotType(index, spotType) {
+    set(setRoundDefaultSpotTypeAction(index, spotType));
   },
   addMatchToRound(index) {
     set(addMatchToRoundAction(index));

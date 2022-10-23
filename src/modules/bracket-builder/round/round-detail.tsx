@@ -26,20 +26,28 @@ export interface RoundDetailProps {
 }
 
 export function RoundDetail({ index, round }: RoundDetailProps) {
-  const { defaultSpotType, clearMatchesInRound, changeRoundName, removeRound, addMatchToRound } =
-    useBracketStore(state => ({
-      defaultSpotType: state.rounds[index].defaultSpotType,
-      clearMatchesInRound: state.clearMatchesInRound,
-      changeRoundName: state.changeRoundName,
-      removeRound: state.removeRound,
-      addMatchToRound: state.addMatchToRound,
-    }));
+  const {
+    defaultSpotType,
+    clearMatchesInRound,
+    changeRoundName,
+    removeRound,
+    addMatchToRound,
+    setRoundDefaultSpotType,
+  } = useBracketStore(state => ({
+    defaultSpotType: state.rounds[index].defaultSpotType,
+    clearMatchesInRound: state.clearMatchesInRound,
+    changeRoundName: state.changeRoundName,
+    removeRound: state.removeRound,
+    addMatchToRound: state.addMatchToRound,
+    setRoundDefaultSpotType: state.setRoundDefaultSpotType,
+  }));
   const setSpotType = usePlacementStore(state => state.setSpotType);
 
   const { confirm } = useConfirmDialog();
 
   const handlePlacementChange = (value: string) => {
     setSpotType(value as AllSpotTypes);
+    setRoundDefaultSpotType(index, value as AllSpotTypes);
     clearMatchesInRound(index);
   };
 
