@@ -47,6 +47,7 @@ export interface BracketStore {
   removeRound: (index: number) => void;
   clearAllRounds: () => void;
   changeRoundName: (index: number, name: string) => void;
+  setRoundDefaultSpotType: (index: number, spotType: AllSpotTypes) => void;
   clearMatchesInRound: (index: number) => void;
   addMatchToRound: (index: number) => void;
   removeMatchFromRound: (index: number, matchIndex: number) => void;

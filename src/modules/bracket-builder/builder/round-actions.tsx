@@ -54,3 +54,9 @@ export function clearMatchesInRoundAction(index: number) {
     state.rounds[index].matchGeneratorData.matches = [];
   });
 }
+
+export function setRoundDefaultSpotTypeAction(index: number, spotType: AllSpotTypes) {
+  return produce((state: BracketStore) => {
+    state.rounds[index].defaultSpotType = spotType;
+  });
+}
