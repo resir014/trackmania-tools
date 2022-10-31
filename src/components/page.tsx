@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GlobalHeader } from './global-header';
 
-export interface PageProps extends React.PropsWithChildren<{}> {
+export interface PageProps extends React.PropsWithChildren {
   subBrand?: string;
 }
 

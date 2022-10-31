@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-export interface PageContentProps extends React.PropsWithChildren<{}> {
+export interface PageContentProps extends React.PropsWithChildren {
   className?: string;
 }
 

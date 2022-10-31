@@ -31,11 +31,9 @@ export default function CustomErrorPage({ statusCode, title }: ErrorProps) {
               <h1 className="text-3xl md:text-4xl font-semibold">{`${errorMessage}`}</h1>
               <p>Click the winke below to go back home.</p>
               <p>
-                <Link href="/">
-                  <a className="inline-block">
-                    <img src="/static/winke.gif" alt="winke" />
-                    <span className="sr-only">(Go back home)</span>
-                  </a>
+                <Link href="/" className="inline-block">
+                  <img src="/static/winke.gif" alt="winke" />
+                  <span className="sr-only">(Go back home)</span>
                 </Link>
               </p>
             </div>
