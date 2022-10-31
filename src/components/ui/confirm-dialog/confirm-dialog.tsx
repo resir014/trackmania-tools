@@ -26,7 +26,7 @@ export const ConfirmDialogContext = React.createContext<ConfirmDialogContextObje
  *
  * **Important:** Wrap your app inside this provider before using `useConfirmDialog()`.
  */
-export function ConfirmDialogProvider({ children }: React.PropsWithChildren<{}>) {
+export function ConfirmDialogProvider({ children }: React.PropsWithChildren) {
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const [dialogOptions, setDialogOptions] = React.useState<ConfirmDialogOptions | undefined>(
     undefined
