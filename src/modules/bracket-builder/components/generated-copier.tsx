@@ -10,8 +10,11 @@ export interface GeneratedTextProps {
 export function GeneratedText({ builderText }: GeneratedTextProps) {
   const [copyComplete, setCopyComplete] = React.useState(false);
 
+  console.log(builderText);
+
   const handleCopyText = () => {
     const success = toClipboard(builderText);
+    console.log(success);
 
     if (success) {
       setCopyComplete(true);

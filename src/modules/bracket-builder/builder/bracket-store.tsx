@@ -23,6 +23,8 @@ export const spotTypeSelections: SpotTypeSelections[] = [
   { label: 'Previous round', value: 'match_participant' },
   { label: 'Manual seed', value: 'competition_participant' },
   { label: 'Leaderboard', value: 'competition_leaderboard' },
+  { label: 'Team seed', value: 'competition_team' },
+  { label: 'Team previous round', value: 'team_match_participant' },
 ];
 
 export const useBracketStore = create<BracketStore>(set => ({

@@ -7,6 +7,8 @@ import { LeaderboardSpot } from './spot-editor/leaderboard-spot';
 import { ManualSeedSpot } from './spot-editor/manual-seed-spot';
 import { PreviousRoundSpot } from './spot-editor/previous-round-spot';
 import { QualifierSpot } from './spot-editor/qualifier-spot';
+import { TeamPreviousRoundSpot } from './spot-editor/team-previous-round-spot';
+import { TeamSeedSpot } from './spot-editor/team-seed-spot';
 
 export interface SpotDetailProps {
   index: number;
@@ -48,6 +50,22 @@ export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailPr
       case 'competition_leaderboard': {
         return (
           <LeaderboardSpot
+            spot={spot}
+            onChange={value => updateMatchSpotDetails(roundIndex, matchIndex, index, value)}
+          />
+        );
+      }
+      case 'competition_team': {
+        return (
+          <TeamSeedSpot
+            spot={spot}
+            onChange={value => updateMatchSpotDetails(roundIndex, matchIndex, index, value)}
+          />
+        );
+      }
+      case 'team_match_participant': {
+        return (
+          <TeamPreviousRoundSpot
             spot={spot}
             onChange={value => updateMatchSpotDetails(roundIndex, matchIndex, index, value)}
           />
