@@ -4,7 +4,7 @@ export function isValidBuilderObject(obj: unknown): obj is StructureBuilderV1 {
   if (typeof obj === 'object' && obj !== null) {
     const structure = obj as Partial<StructureBuilderV1>;
 
-    if (structure.version && structure.rounds) {
+    if (typeof structure.version !== 'undefined' && typeof structure.rounds !== 'undefined') {
       return true;
     }
 
