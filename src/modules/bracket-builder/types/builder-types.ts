@@ -3,13 +3,17 @@ import {
   PreviousRoundParticipant,
   QualifierParticipant,
   SeedParticipant,
+  TeamPreviousRoundParticipant,
+  TeamSeedParticipant,
 } from './participant-types';
 
 export type AllParticipant =
   | QualifierParticipant
   | PreviousRoundParticipant
   | SeedParticipant
-  | LeaderboardParticipant;
+  | LeaderboardParticipant
+  | TeamSeedParticipant
+  | TeamPreviousRoundParticipant;
 
 export type AllSpotTypes = AllParticipant['spotType'];
 

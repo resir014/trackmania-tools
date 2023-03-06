@@ -39,3 +39,27 @@ export interface LeaderboardParticipant {
   /** The participant's current rank. */
   rank: number;
 }
+
+/**
+ * Team participant with a manually given seed.
+ *
+ * Set the seed for each participant from the admin panel after the creation.
+ */
+export interface TeamSeedParticipant {
+  /** Spot type (always static per participant type) */
+  spotType: 'competition_team';
+  /** The participant's seed. */
+  seed: number;
+}
+
+/** Team participant from a previous round match. */
+export interface TeamPreviousRoundParticipant {
+  /** Spot type (always static per participant type) */
+  spotType: 'team_match_participant';
+  /** The zero-indexed value of the previous round position (e.g. 1st round, 2nd round.) */
+  roundPosition: number;
+  /** The zero-indexed value of the match number. */
+  matchPosition: number;
+  /** Participant's finishing position in previous round. */
+  rank: number;
+}

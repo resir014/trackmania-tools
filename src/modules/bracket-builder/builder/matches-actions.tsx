@@ -53,6 +53,22 @@ export function addPlayerToMatchAction(index: number, matchIndex: number, genera
         });
         break;
       }
+      case 'competition_team': {
+        match.spots.push({
+          spotType: 'competition_team',
+          seed: 1,
+        });
+        break;
+      }
+      case 'team_match_participant': {
+        match.spots.push({
+          spotType: 'team_match_participant',
+          roundPosition: 0,
+          matchPosition: 0,
+          rank: 1,
+        });
+        break;
+      }
       default: {
         match.spots.push({
           spotType: 'round_challenge_participant',
