@@ -1,5 +1,5 @@
 import { CheckIcon, ClipboardIcon } from '@heroicons/react/24/outline';
-import { toClipboard } from 'copee';
+import { fromElement } from 'copee';
 import * as React from 'react';
 import { GhostedButton } from '~/components/ui/button';
 
@@ -8,20 +8,20 @@ export interface GeneratedTextProps {
 }
 
 export function GeneratedText({ builderText }: GeneratedTextProps) {
+  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
   const [copyComplete, setCopyComplete] = React.useState(false);
 
-  console.log(builderText);
-
   const handleCopyText = () => {
-    const success = toClipboard(builderText);
-    console.log(success);
+    if (textAreaRef.current) {
+      const success = fromElement(textAreaRef.current);
 
-    if (success) {
-      setCopyComplete(true);
+      if (success) {
+        setCopyComplete(true);
 
-      setTimeout(() => {
-        setCopyComplete(false);
-      }, 2500);
+        setTimeout(() => {
+          setCopyComplete(false);
+        }, 2500);
+      }
     }
   };
 
@@ -29,7 +29,7 @@ export function GeneratedText({ builderText }: GeneratedTextProps) {
     <div className="relative flex flex-col flex-1">
       <GhostedButton
         type="button"
-        className="absolute top-2 right-4"
+        className="absolute top-2 right-6"
         color="blue"
         icon={copyComplete ? CheckIcon : ClipboardIcon}
         iconOnly
@@ -37,9 +37,11 @@ export function GeneratedText({ builderText }: GeneratedTextProps) {
       >
         {copyComplete ? 'Copied!' : 'Copy to clipboard'}
       </GhostedButton>
-      <pre className="flex-1 p-4 bg-gray-800 rounded-tl-lg rounded-br-lg text-sm text-left h-full min-h-[64px] overflow-hidden select-none pointer-events-none">
-        {builderText}
-      </pre>
+      <textarea
+        ref={textAreaRef}
+        className="flex-1 p-4 bg-gray-800 rounded-tl-lg rounded-br-lg text-sm text-left h-full min-h-[64px] font-mono overflow-auto"
+        value={builderText}
+      />
     </div>
   );
 }
