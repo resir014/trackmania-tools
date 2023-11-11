@@ -65,7 +65,7 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
   };
 
   return (
-    <div className="shrink-0 basis-full md:basis-6/12 lg:basis-4/12 bg-black shadow-md rounded-tl-md rounded-br-md">
+    <div className="shrink-0 basis-full md:basis-6/12 lg:basis-4/12 bg-black shadow-md rounded-md">
       <div className="xl:flex xl:items-center xl:justify-between px-4 py-2 border-b border-gray-700">
         <div className="min-w-0 flex-1">
           <RoundNameEditor

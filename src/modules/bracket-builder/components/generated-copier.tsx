@@ -39,7 +39,7 @@ export function GeneratedText({ builderText }: GeneratedTextProps) {
       </GhostedButton>
       <textarea
         ref={textAreaRef}
-        className="flex-1 p-4 bg-gray-800 rounded-tl-lg rounded-br-lg text-sm text-left h-full min-h-[64px] font-mono overflow-auto"
+        className="flex-1 p-4 bg-gray-800 rounded-lg text-sm text-left h-full min-h-[64px] font-mono overflow-auto"
         value={builderText}
       />
     </div>
