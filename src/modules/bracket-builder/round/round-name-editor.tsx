@@ -40,7 +40,7 @@ export function RoundNameEditor({ initialValue, onChange }: RoundNameEditorProps
           autoComplete="off"
           onFocus={() => setIsEditing(true)}
           className={clsx(
-            'w-full pl-2 pr-14 py-1 border border-transparent rounded-tl-md rounded-br-md text-lg font-semibold',
+            'w-full pl-2 pr-14 py-1 border border-transparent rounded-md text-lg font-semibold',
             isEditing ? 'bg-gray-800 bg-opacity-50' : 'bg-transparent',
             'hover:bg-gray-800 hover:bg-opacity-50 focus:bg-gray-800 focus:bg-opacity-50',
             'focus:border-green-500 focus:outline-none focus:ring-green-500'

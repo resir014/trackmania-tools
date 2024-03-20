@@ -17,7 +17,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         show={_visible}
       >
         <div
-          className={clsx(alertColors(color), 'p-4 rounded-tl-lg rounded-br-lg', className)}
+          className={clsx(alertColors(color), 'p-4 rounded-lg', className)}
           role="alert"
           {...rest}
           ref={ref}

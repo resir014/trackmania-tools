@@ -40,7 +40,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   };
 
   return (
-    <div className="relative overflow-hidden bg-black rounded-tl-2xl rounded-br-2xl shadow">
+    <div className="relative overflow-hidden bg-black rounded-2xl shadow">
       <div className="flex items-center justify-center min-h-[240px] px-4">
         {project.logo ? (
           <img

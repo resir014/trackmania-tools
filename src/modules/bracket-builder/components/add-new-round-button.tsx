@@ -118,7 +118,7 @@ export function AddNewRoundButton({ className, onCreateRound }: AddNewRoundButto
   return (
     <div
       className={clsx(
-        'shrink-0 basis-full md:basis-6/12 lg:basis-4/12 xl:min-h-[655px] bg-black shadow-md rounded-tl-md rounded-br-md',
+        'shrink-0 basis-full md:basis-6/12 lg:basis-4/12 xl:min-h-[655px] bg-black shadow-md rounded-md',
         className
       )}
     >

@@ -41,10 +41,10 @@ export function buttonRoundedStyles(rounded?: boolean, size?: ButtonSizes) {
   }
 
   if (size !== 'xs') {
-    return 'rounded-tl-md rounded-br-md';
+    return 'rounded-md';
   }
 
-  return 'rounded-tl rounded-br';
+  return 'rounded';
 }
 
 export function buttonIconClasses(
