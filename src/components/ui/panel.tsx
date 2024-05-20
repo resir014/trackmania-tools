@@ -83,7 +83,7 @@ export function Panel({
                           <div className="ml-3 flex h-7 items-center">
                             <button
                               type="button"
-                              className="rounded-md bg-gray-900 text-blue-200 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                              className="rounded-md bg-gray-900 text-blue-200 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-gray-900"
                               onClick={handleClosePanel}
                               ref={closeButtonRef}
                             >

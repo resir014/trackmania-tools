@@ -65,7 +65,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                           href="https://admin.trackmania.nadeo.club/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-green-500 hover:underline"
+                          className="text-green-300 hover:underline"
                         >
                           competition tool
                         </a>
@@ -74,7 +74,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                           href="https://doc.trackmania.com/competition-tool/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-green-500 hover:underline"
+                          className="text-green-300 hover:underline"
                         >
                           official documentation
                         </a>
@@ -86,7 +86,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                           href="https://github.com/resir014/trackmania-tools"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-green-500 hover:underline"
+                          className="text-green-300 hover:underline"
                         >
                           MIT licence
                         </a>
@@ -99,7 +99,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                             href="https://twitter.com/Crawron"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-green-500 hover:underline"
+                            className="text-green-300 hover:underline"
                           >
                             @Crawron
                           </a>{' '}

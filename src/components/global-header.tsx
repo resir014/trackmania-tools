@@ -8,7 +8,7 @@ export interface GlobalHeaderProps {
 
 export function GlobalHeader({ subBrand }: GlobalHeaderProps) {
   return (
-    <header className="flex items-center h-[36px] px-6 bg-black">
+    <header className="flex items-center h-[36px] px-6 bg-gray-950">
       <div className="flex items-center space-x-3">
         <Link href="/" className="flex items-center space-x-1 group text-sm leading-4">
           <TMToolsLogo height={16} aria-hidden />
