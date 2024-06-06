@@ -81,9 +81,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.0.10
         version: 18.0.10
-      '@types/styled-jsx':
-        specifier: ^3.4.4
-        version: 3.4.4(@babel/core@7.24.5)(react@18.3.1)
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.50.0
         version: 5.50.0(@typescript-eslint/parser@5.50.0(eslint@8.57.0)(typescript@4.8.4))(eslint@8.57.0)(typescript@4.8.4)
@@ -135,6 +132,9 @@ importers:
       prettier:
         specifier: ^2.8.3
         version: 2.8.3
+      react-intersection-observer:
+        specifier: ^9.10.3
+        version: 9.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       stylelint:
         specifier: ^14.16.1
         version: 14.16.1
@@ -785,10 +785,6 @@ packages:
 
   '@types/stack-utils@2.0.1':
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
-
-  '@types/styled-jsx@3.4.4':
-    resolution: {integrity: sha512-PRRa7gU7ske4Vs7sKWrqfKnuIIS6E/Yj5oKyxuM11AwOKhH9HlbQ7cKGLluXkOXzpEoDJE+6kQMj3AE34/JooQ==}
-    deprecated: This is a stub types definition. styled-jsx provides its own type definitions, so you do not need this installed.
 
   '@types/tough-cookie@4.0.5':
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
@@ -2835,6 +2831,15 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
+  react-intersection-observer@9.10.3:
+    resolution: {integrity: sha512-9NYfKwPZRovB6QJee7fDg0zz/SyYrqXtn5xTZU0vwLtLVBtfu9aZt1pVmr825REE49VPDZ7Lm5SNHjJBOTZHpA==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -4256,14 +4261,6 @@ snapshots:
   '@types/semver@7.3.13': {}
 
   '@types/stack-utils@2.0.1': {}
-
-  '@types/styled-jsx@3.4.4(@babel/core@7.24.5)(react@18.3.1)':
-    dependencies:
-      styled-jsx: 5.1.1(@babel/core@7.24.5)(react@18.3.1)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - babel-plugin-macros
-      - react
 
   '@types/tough-cookie@4.0.5': {}
 
@@ -6726,6 +6723,12 @@ snapshots:
       loose-envify: 1.4.0
       react: 18.3.1
       scheduler: 0.23.2
+
+  react-intersection-observer@9.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+    optionalDependencies:
+      react-dom: 18.3.1(react@18.3.1)
 
   react-is@16.13.1: {}
 
