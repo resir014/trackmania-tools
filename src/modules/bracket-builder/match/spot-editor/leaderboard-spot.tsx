@@ -32,7 +32,7 @@ export function LeaderboardSpot({ spot, onChange }: LeaderboardSpotProps) {
         Rank
       </label>
       <InputAddonGroup>
-        <InputAddonText>#</InputAddonText>
+        <InputAddonText>P</InputAddonText>
         <InputText
           type="text"
           inputMode="numeric"

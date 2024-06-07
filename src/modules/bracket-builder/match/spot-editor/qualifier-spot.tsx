@@ -32,7 +32,7 @@ export function QualifierSpot({ spot, onChange }: QualifierSpotProps) {
         Rank
       </label>
       <InputAddonGroup className="w-full">
-        <InputAddonText>#</InputAddonText>
+        <InputAddonText>Q</InputAddonText>
         <InputText
           type="text"
           inputMode="numeric"
