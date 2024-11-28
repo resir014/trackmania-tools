@@ -10,20 +10,20 @@ You can also help the project by [submitting bug reports or feature requests](ht
 
 ## Developing
 
-A nodejs >= 12.0.0 setup with [yarn](https://yarnpkg.com/) is recommended.
+A nodejs >= 12.0.0 setup with [pnpm](https://pnpm.io/) is recommended.
 
 ```bash
 # install dependencies
-yarn
+pnpm install
 
 # serve with hot reload at localhost:3000
-yarn dev
+pnpm run dev
 
 # build for production
-yarn build
+pnpm run build
 
 # run lint + type check
-yarn validate
+pnpm run validate
 ```
 
 ## Credits
