@@ -16,6 +16,7 @@ import { AddNewRoundButton } from './components/add-new-round-button';
 import { ExporterDrawer } from './components/exporter-drawer';
 import { ImporterDrawer } from './components/importer-drawer';
 import { RoundDetail } from './round/round-detail';
+import TooltipWrapper from '~/components/ui/tooltip/tooltip-wrapper';
 
 export function BracketBuilder() {
   const { confirm } = useConfirmDialog();
@@ -72,9 +73,11 @@ export function BracketBuilder() {
           <PageHeader
             pageTitle="Bracket Builder"
             tooltip={
-              <GhostedButton icon={InformationCircleIcon} iconOnly onClick={openAboutModal}>
-                About
-              </GhostedButton>
+              <TooltipWrapper content="Whats this all about?">
+                <GhostedButton icon={InformationCircleIcon} iconOnly onClick={openAboutModal}>
+                  About
+                </GhostedButton>
+              </TooltipWrapper>
             }
             actions={
               <div className="flex flex-wrap items-center -m-2">
