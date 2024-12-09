@@ -1,9 +1,9 @@
 import * as Tooltip from '@radix-ui/react-tooltip';
-import { ReactNode } from 'react';
+import * as React from 'react';
 
 interface TooltipWrapperProps {
-  content: ReactNode;
-  children: ReactNode;
+  content: React.ReactNode;
+  children: React.ReactNode;
 }
 
 const TooltipWrapper: React.FC<TooltipWrapperProps> = ({ content, children }) => (
