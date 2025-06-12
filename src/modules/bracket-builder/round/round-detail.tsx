@@ -9,6 +9,7 @@ import { AllSpotTypes, BuilderRoundDetail } from '../types/builder-types';
 import { MatchDetail } from '../match/match-detail';
 import { RoundNameEditor } from './round-name-editor';
 import { RoundPlacementSelector } from './round-placement-selector';
+import { Tooltip } from '~/components/ui/tooltip';
 
 export interface PlacementStore {
   spotType: AllSpotTypes;
@@ -76,12 +77,16 @@ export function RoundDetail({ index, round }: RoundDetailProps) {
               defaultValue={defaultSpotType}
               onChange={handlePlacementChange}
             />
-            <SecondaryButton icon={PlusIcon} iconOnly onClick={() => addMatchToRound(index)}>
-              Add match
-            </SecondaryButton>
-            <SecondaryButton color="red" icon={TrashIcon} iconOnly onClick={handleRemoveRound}>
-              Remove round
-            </SecondaryButton>
+            <Tooltip content="Add match">
+              <SecondaryButton icon={PlusIcon} iconOnly onClick={() => addMatchToRound(index)}>
+                Add match
+              </SecondaryButton>
+            </Tooltip>
+            <Tooltip content="Remove round">
+              <SecondaryButton color="red" icon={TrashIcon} iconOnly onClick={handleRemoveRound}>
+                Remove round
+              </SecondaryButton>
+            </Tooltip>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import Head from 'next/head';
 import siteMetadata from '~/modules/data/site-metadata';
 import { defaultOpenGraph, defaultTwitterCard } from '~/utils/seo';
 import { ConfirmDialogProvider } from '~/components/ui/confirm-dialog';
+import { TooltipProvider } from '~/components/ui/tooltip';
 
 import '~/styles/fonts';
 import '~/styles/globals.css';
@@ -39,7 +40,9 @@ export default function MyApp({ Component, pageProps, router }: AppProps): JSX.E
       />
 
       <ConfirmDialogProvider>
-        <Component {...pageProps} />
+        <TooltipProvider>
+          <Component {...pageProps} />
+        </TooltipProvider>
       </ConfirmDialogProvider>
     </>
   );

@@ -5,6 +5,7 @@ import { SecondaryButton } from '~/components/ui/button';
 import { useBracketStore } from '../builder/bracket-store';
 import { MatchSettingsData } from '../types/builder-types';
 import { SpotDetail } from './spot-detail';
+import { Tooltip } from '~/components/ui/tooltip';
 
 export interface MatchDetailProps {
   index: number;
@@ -24,24 +25,28 @@ export function MatchDetail({ index, roundIndex, match, generatorType }: MatchDe
           <h3 className="text-md font-semibold truncate">Match #{index + 1}</h3>
         </div>
         <div className="flex items-center space-x-1">
-          <SecondaryButton
-            color="red"
-            size="xs"
-            icon={TrashIcon}
-            iconOnly
-            onClick={() => removeMatchFromRound(roundIndex, index)}
-          >
-            Remove match
-          </SecondaryButton>
-          <SecondaryButton
-            color="blue"
-            size="xs"
-            icon={ClipboardDocumentIcon}
-            iconOnly
-            onClick={() => addPlayerToMatch(roundIndex, index, generatorType)}
-          >
-            Add player to match
-          </SecondaryButton>
+          <Tooltip content="Remove match">
+            <SecondaryButton
+              color="red"
+              size="xs"
+              icon={TrashIcon}
+              iconOnly
+              onClick={() => removeMatchFromRound(roundIndex, index)}
+            >
+              Remove match
+            </SecondaryButton>
+          </Tooltip>
+          <Tooltip content="Add player to match">
+            <SecondaryButton
+              color="blue"
+              size="xs"
+              icon={ClipboardDocumentIcon}
+              iconOnly
+              onClick={() => addPlayerToMatch(roundIndex, index, generatorType)}
+            >
+              Add player to match
+            </SecondaryButton>
+          </Tooltip>
         </div>
       </div>
       <SimpleBar>

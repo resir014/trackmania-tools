@@ -9,6 +9,7 @@ import { PreviousRoundSpot } from './spot-editor/previous-round-spot';
 import { QualifierSpot } from './spot-editor/qualifier-spot';
 import { TeamPreviousRoundSpot } from './spot-editor/team-previous-round-spot';
 import { TeamSeedSpot } from './spot-editor/team-seed-spot';
+import { Tooltip } from '~/components/ui/tooltip';
 
 export interface SpotDetailProps {
   index: number;
@@ -86,14 +87,16 @@ export function SpotDetail({ index, matchIndex, roundIndex, spot }: SpotDetailPr
         <div className="flex items-center space-x-2 flex-1">{renderSpots()}</div>
       </div>
       <div className="ml-2">
-        <SecondaryButton
-          color="red"
-          icon={TrashIcon}
-          iconOnly
-          onClick={() => removePlayerFromMatch(roundIndex, matchIndex, index)}
-        >
-          Remove player
-        </SecondaryButton>
+        <Tooltip content="Remove player">
+          <SecondaryButton
+            color="red"
+            icon={TrashIcon}
+            iconOnly
+            onClick={() => removePlayerFromMatch(roundIndex, matchIndex, index)}
+          >
+            Remove player
+          </SecondaryButton>
+        </Tooltip>
       </div>
     </div>
   );

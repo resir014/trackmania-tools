@@ -10,13 +10,13 @@ import { PageContent } from '~/components/page-content';
 import { PageHeader } from '~/components/page-header';
 import { GhostedButton, PrimaryButton } from '~/components/ui/button';
 import { useConfirmDialog } from '~/components/ui/confirm-dialog';
+import { Tooltip } from '~/components/ui/tooltip';
 import { useBracketStore, useGeneratedJSON } from './builder/bracket-store';
 import AboutModal from './components/about-modal';
 import { AddNewRoundButton } from './components/add-new-round-button';
 import { ExporterDrawer } from './components/exporter-drawer';
 import { ImporterDrawer } from './components/importer-drawer';
 import { RoundDetail } from './round/round-detail';
-import TooltipWrapper from '~/components/ui/tooltip/tooltip-wrapper';
 
 export function BracketBuilder() {
   const { confirm } = useConfirmDialog();
@@ -73,11 +73,11 @@ export function BracketBuilder() {
           <PageHeader
             pageTitle="Bracket Builder"
             tooltip={
-              <TooltipWrapper content="Whats this all about?">
+              <Tooltip content="What's this all about?">
                 <GhostedButton icon={InformationCircleIcon} iconOnly onClick={openAboutModal}>
                   About
                 </GhostedButton>
-              </TooltipWrapper>
+              </Tooltip>
             }
             actions={
               <div className="flex flex-wrap items-center -m-2">
