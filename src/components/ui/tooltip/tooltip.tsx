@@ -1,6 +1,6 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import clsx from 'clsx';
-import { ReactNode } from 'react';
+import * as React from 'react';
 
 interface TooltipProps
   extends Pick<
@@ -9,7 +9,7 @@ interface TooltipProps
     >,
     Pick<TooltipPrimitive.TooltipTriggerProps, 'children'>,
     TooltipPrimitive.TooltipContentProps {
-  content: ReactNode;
+  content: React.ReactNode;
 }
 
 export const TooltipProvider = TooltipPrimitive.Provider;
