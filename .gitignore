@@ -2,6 +2,9 @@
 /.react-router/
 /build/
 
+# Netlify
+/.netlify/
+
 # TypeScript build info
 *.tsbuildinfo
 
