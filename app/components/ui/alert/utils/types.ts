@@ -1,4 +1,4 @@
-import { BaseColors } from '../../types';
+import { type BaseColors } from '../../types';
 
 interface AlertBaseProps {
   /**

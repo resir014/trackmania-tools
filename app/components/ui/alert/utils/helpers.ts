@@ -1,8 +1,8 @@
+import clsx from 'clsx';
 import * as React from 'react';
 
-import clsx from 'clsx';
-import { BaseColors } from '../../types';
-import { AlertProps } from './types';
+import { type BaseColors } from '../../types';
+import { type AlertProps } from './types';
 
 export function alertColors(color?: BaseColors) {
   switch (color) {

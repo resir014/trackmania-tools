@@ -1,7 +1,7 @@
-import clsx from 'clsx';
-import * as React from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
+import * as React from 'react';
 import { modalOverlayStyles } from './modal';
 
 export type PanelSizes = 'sm' | 'lg';

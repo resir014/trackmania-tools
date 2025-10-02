@@ -19,12 +19,12 @@ describe('alertColors', () => {
   });
 
   test(`returns yellow color when color is not defined`, () => {
-    expect(alertColors()).toEqual('bg-yellow-900 bg-opacity-50 text-yellow-300');
+    expect(alertColors()).toBe('bg-yellow-900 bg-opacity-50 text-yellow-300');
   });
 });
 
 describe('renderAlertIcon', () => {
   test('return null if icon undefined', () => {
-    expect(renderAlertIcon()).toEqual(null);
+    expect(renderAlertIcon()).toBeNull();
   });
 });

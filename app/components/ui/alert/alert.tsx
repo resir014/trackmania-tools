@@ -1,9 +1,8 @@
-import * as React from 'react';
-
 import { Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
-import { alertColors, AlertProps, renderAlertIcon } from './utils';
+import * as React from 'react';
+import { alertColors, type AlertProps, renderAlertIcon } from './utils';
 
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
   ({ children, className, color = 'yellow', dismissible, icon, visible = true, ...rest }, ref) => {

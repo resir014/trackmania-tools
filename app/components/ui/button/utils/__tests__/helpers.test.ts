@@ -48,7 +48,7 @@ describe('primaryButtonColors', () => {
   });
 
   test(`returns gray when color is not defined`, () => {
-    expect(primaryButtonColors()).toEqual('text-white bg-gray-600 hover:bg-gray-700');
+    expect(primaryButtonColors()).toBe('text-white bg-gray-600 hover:bg-gray-700');
   });
 });
 
@@ -69,7 +69,7 @@ describe('secondaryButtonColors', () => {
   });
 
   test(`returns gray when color is not defined`, () => {
-    expect(secondaryButtonColors()).toEqual('text-gray-200 bg-gray-900 hover:bg-gray-800');
+    expect(secondaryButtonColors()).toBe('text-gray-200 bg-gray-900 hover:bg-gray-800');
   });
 });
 
@@ -90,6 +90,6 @@ describe('outlineButtonColors', () => {
   });
 
   test(`returns gray when color is not defined`, () => {
-    expect(outlineButtonColors()).toEqual('text-gray-700 border-gray-700 hover:bg-gray-900');
+    expect(outlineButtonColors()).toBe('text-gray-700 border-gray-700 hover:bg-gray-900');
   });
 });
