@@ -7,7 +7,7 @@ import siteMetadata from '~/data/site-metadata';
 const metaTitle = 'Bracket Builder';
 const metaDescription = 'A supplementary tool to generate brackets for the official Trackmania competition tool.';
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ location }: Route.MetaArgs) {
   return [
     { title: `${metaTitle} · ${siteMetadata.title}` },
     { name: 'description', content: metaDescription },
