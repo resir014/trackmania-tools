@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-mono: 'JetBrains Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace, monospace;
+
+  --color-gray-50: #efeff6;
+  --color-gray-100: #dedeed;
+  --color-gray-200: #bebeda;
+  --color-gray-300: #9d9dc8;
+  --color-gray-400: #7c7cb6;
+  --color-gray-500: #5c5ca3;
+  --color-gray-600: #494983;
+  --color-gray-700: #373762;
+  --color-gray-800: #252541;
+  --color-gray-900: #121220;
+  --color-gray-950: #090910;
+
+  --color-red-50: #ffe5e5;
+  --color-red-100: #ffc7c7;
+  --color-red-200: #ff9494;
+  --color-red-300: #ff5c5c;
+  --color-red-400: #ff2424;
+  --color-red-500: #ee0000;
+  --color-red-600: #bd0000;
+  --color-red-700: #8f0000;
+  --color-red-800: #610000;
+  --color-red-900: #2e0000;
+  --color-red-950: #190000;
+
+  --color-orange-50: #fef0e7;
+  --color-orange-100: #fcdfca;
+  --color-orange-200: #fac199;
+  --color-orange-300: #f7a164;
+  --color-orange-400: #f48432;
+  --color-orange-500: #e8680c;
+  --color-orange-600: #b8520a;
+  --color-orange-700: #8c3f08;
+  --color-orange-800: #5c2905;
+  --color-orange-900: #301603;
+  --color-orange-950: #180b01;
+
+  --color-cyan-50: #e7fafe;
+  --color-cyan-100: #cff5fc;
+  --color-cyan-200: #9eeafa;
+  --color-cyan-300: #6ee0f7;
+  --color-cyan-400: #3ed6f4;
+  --color-cyan-500: #0dcaf0;
+  --color-cyan-600: #0ba3c1;
+  --color-cyan-700: #087a91;
+  --color-cyan-800: #055161;
+  --color-cyan-900: #032930;
+  --color-cyan-950: #011418;
+
+  --color-blue-50: #e8f3fd;
+  --color-blue-100: #d0e6fb;
+  --color-blue-200: #9dcbf6;
+  --color-blue-300: #6eb2f2;
+  --color-blue-400: #4099ed;
+  --color-blue-500: #157ee0;
+  --color-blue-600: #1064b1;
+  --color-blue-700: #0c4982;
+  --color-blue-800: #083259;
+  --color-blue-900: #04182a;
+  --color-blue-950: #020d17;
+
+  --color-green-50: #e6feef;
+  --color-green-100: #cefdde;
+  --color-green-200: #9cfcbe;
+  --color-green-300: #6efaa0;
+  --color-green-400: #3ff880;
+  --color-green-500: #09f65c;
+  --color-green-600: #07c549;
+  --color-green-700: #059437;
+  --color-green-800: #036325;
+  --color-green-900: #023112;
+  --color-green-950: #011909;
+}
+
+@layer base {
+  a:focus {
+    @apply ring-[3px] ring-green-500/60 outline-none;
+  }
+
+  a,
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .helper-link-cover::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .helper-cm-fullheight .cm-editor {
+    height: 100%;
+  }
+
+  .helper-cm-fullheight .cm-scroller {
+    overflow: auto;
+  }
+}

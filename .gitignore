@@ -1,15 +1,6 @@
-# =========================
-# Node.js-Specific Ignores
-# =========================
-
-# Build directory
-.next/
-
-# Static export path
-out/
-
-# swc cache
-.swc/
+# React Router
+/.react-router/
+/build/
 
 # TypeScript build info
 *.tsbuildinfo
