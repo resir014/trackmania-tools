@@ -1,0 +1,5 @@
+@reference "./app.css";
+
+.simplebar-scrollbar::before {
+  @apply bg-gray-500;
+}

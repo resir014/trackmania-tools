@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`InputText renders correctly 1`] = `
-<textarea
-  class="shadow-sm rounded-md border-transparent bg-gray-800 hover:bg-gray-900 hover:bg-opacity-50 focus:ring-green-500 focus:border-green-500"
-  rows="4"
-/>
-`;

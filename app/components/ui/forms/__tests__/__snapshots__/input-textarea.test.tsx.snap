@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputText > renders correctly 1`] = `
+<textarea
+  class="hover:bg-opacity-50 rounded-md border-transparent bg-gray-800 shadow-sm hover:bg-gray-900 focus:border-green-500 focus:ring-green-500"
+  rows="4"
+/>
+`;
+
+exports[`InputText renders correctly 1`] = `
+<textarea
+  class="shadow-sm rounded-md border-transparent bg-gray-800 hover:bg-gray-900 hover:bg-opacity-50 focus:ring-green-500 focus:border-green-500"
+  rows="4"
+/>
+`;

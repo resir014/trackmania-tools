@@ -6,7 +6,7 @@
 
 Pull Requests + other contributions welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file to get started.
 
-You can also help the project by [submitting bug reports or feature requests](https://github.com/resir014/TMViz/issues/new/choose).
+You can also help the project by [submitting bug reports or feature requests](https://github.com/resir014/trackmania-tools/issues/new/choose).
 
 ## Developing
 
@@ -28,7 +28,7 @@ pnpm run validate
 
 ## Credits
 
-Built with [Next.js](https://nextjs.org/).
+Built with [React Router](https://reactrouter.com/).
 
 ## License
 
