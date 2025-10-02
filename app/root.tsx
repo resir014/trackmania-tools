@@ -2,6 +2,7 @@ import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration }
 import type { Route } from './+types/root';
 import { ConfirmDialogProvider } from './components/ui/confirm-dialog';
 import { TooltipProvider } from './components/ui/tooltip';
+import siteMetadata from './data/site-metadata';
 import { ErrorPage } from './error-page';
 
 import './app.css';
@@ -24,6 +25,13 @@ export const links: Route.LinksFunction = () => [
     href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap',
   },
 ];
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: siteMetadata.title },
+    { name: 'description', content: siteMetadata.description },
+  ] satisfies Route.MetaDescriptors;
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
