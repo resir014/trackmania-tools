@@ -9,7 +9,7 @@
     "format": "prettier --write \"./**/*.{ts,tsx}\"",
     "lint": "eslint \"./app/**/*.{cjs,mjs,js,jsx,ts,tsx}\" \"*.{cjs,mjs,js,jsx,ts,tsx}\"",
     "typecheck": "react-router typegen && tsc",
-    "validate": "pnpm run lint && pnpm run type-check",
+    "validate": "pnpm run lint && pnpm run typecheck",
     "test": "vitest"
   },
   "dependencies": {
