@@ -1,5 +1,6 @@
-import { BaseColors } from '~/components/ui/types';
+import { describe, expect, test } from 'vitest';
 import { alertColors, renderAlertIcon } from '../helpers';
+import { type BaseColors } from '~/components/ui/types';
 
 describe('alertColors', () => {
   test.each`

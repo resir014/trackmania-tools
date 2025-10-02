@@ -1,10 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from 'react';
-
 import { PlusIcon } from '@heroicons/react/24/outline';
 import { render } from '@testing-library/react';
+import { describe, expect, test } from 'vitest';
 import { OutlineButton, PrimaryButton, SecondaryButton } from '../button';
 
 describe('Button', () => {

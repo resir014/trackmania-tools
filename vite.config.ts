@@ -5,5 +5,9 @@ import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), netlifyPlugin()],
+  plugins: [tailwindcss(), !process.env.VITEST && reactRouter(), tsconfigPaths(), netlifyPlugin()],
+  test: {
+    setupFiles: ['./app/setup-tests.ts'],
+    environment: 'jsdom',
+  },
 });

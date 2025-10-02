@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import {
   buttonBlockStyles,
   buttonIconClasses,
@@ -5,7 +6,7 @@ import {
   primaryButtonColors,
   secondaryButtonColors,
 } from '../helpers';
-import { ButtonColors, ButtonIconPositions, ButtonSizes } from '../types';
+import { type ButtonColors, type ButtonIconPositions, type ButtonSizes } from '../types';
 
 describe('buttonIconClasses', () => {
   test.each`

@@ -1,4 +1,37 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > OutlineButton > renders correctly 1`] = `
+<button
+  class="inline-flex flex-row px-4 py-2 text-sm rounded-md items-center justify-center border font-medium shadow-sm ring-offset-gray-900 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none text-blue-500 border-blue-500 hover:bg-blue-900 disabled:cursor-not-allowed disabled:opacity-75"
+  type="button"
+>
+  <span>
+    test button
+  </span>
+</button>
+`;
+
+exports[`Button > PrimaryButton > renders correctly 1`] = `
+<button
+  class="inline-flex flex-row px-4 py-2 text-sm rounded-md items-center justify-center border border-transparent font-medium shadow-sm ring-offset-gray-900 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none text-white bg-blue-600 hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-75"
+  type="button"
+>
+  <span>
+    test button
+  </span>
+</button>
+`;
+
+exports[`Button > SecondaryButton > renders correctly 1`] = `
+<button
+  class="inline-flex flex-row px-4 py-2 text-sm rounded-md items-center justify-center border border-transparent font-medium ring-offset-gray-900 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none text-blue-200 bg-blue-900 hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-75"
+  type="button"
+>
+  <span>
+    test button
+  </span>
+</button>
+`;
 
 exports[`Button OutlineButton renders correctly 1`] = `
 <button

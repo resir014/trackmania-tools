@@ -1,7 +1,7 @@
-import React from 'react';
-
-import { screen, fireEvent, render } from '@testing-library/react';
 import { BellIcon } from '@heroicons/react/24/outline';
+import { screen, fireEvent, render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
 import { Alert } from '../alert';
 
 describe('Alert', () => {
